@@ -30,6 +30,10 @@ public class Town
 
 	public void setSchool(boolean value) {
 		this.school = value;
+	}
+
+	public int[] getLink() {
+		return link;
 	}	
 	
 
