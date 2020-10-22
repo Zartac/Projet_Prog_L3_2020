@@ -8,7 +8,7 @@ public class Town
 	private boolean school;
 	private int[] link;
 	
-	public Town(char name)
+	public Town(char name) //Penser à bouger en String pour les prochaines parties
 	{
 		++serialcounter;
 		this.name=name;
