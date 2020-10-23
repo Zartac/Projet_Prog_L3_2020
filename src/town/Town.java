@@ -1,13 +1,24 @@
 package town;
 
+/**
+ * Classe pour la création et la modification de ville.
+ * 
+ * @author Amanda Messahel, Johan Laforge, Jack Thay
+ * 
+ *
+ */
 public class Town 
 {
 	private static int serialcounter = 0;
-	private char name;
+	private char name; // J'ai un peu oublier comment on utiliser les string en Java -- Jack
 	private int serial;
 	private boolean school;
 	private int[] link;
 	
+	/**
+	 * Création basique d'une ville sans école, cette ville a un numéro de série unique.
+	 * @param name
+	 */
 	public Town(char name) //Penser à bouger en String pour les prochaines parties
 	{
 		++serialcounter;
@@ -15,24 +26,49 @@ public class Town
 		serial = serialcounter;
 		setSchool(false);
 	}
-
-	public char getName() {
+	
+	/**
+	 * Récupère le nom de la ville.
+	 * @return Nom de la ville.
+	 */
+	public char getName() 
+	{
 		return name;
 	}
 
-	public int getSerial() {
+	/**
+	 * Récupère le numéro de série de la ville.
+	 * @return Numéro de série.
+	 */
+	public int getSerial() 
+	{
 		return serial;
 	}
 
-	public boolean isSchool() {
+	/**
+	 * Vérifie la présence ou non d'une école dans la ville.
+	 * @return True/False sur l'existence de l'école.
+	 */
+	public boolean isSchool() 
+	{
 		return school;
 	}
 
-	public void setSchool(boolean value) {
+	/**
+	 * Ajoute ou retire une école dans cette ville.
+	 * @param value (True/False).
+	 */
+	public void setSchool(boolean value) 
+	{
 		this.school = value;
 	}
 
-	public int[] getLink() {
+	/**
+	 * Récupère la liste des voisins de cette ville.
+	 * @return Tableau de "int".
+	 */
+	public int[] getLink() 
+	{
 		return link;
 	}	
 	
