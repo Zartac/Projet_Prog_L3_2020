@@ -25,6 +25,11 @@ public class Main {
 				System.out.println("Veuillez en ressaisir un autre : ");
 				choice = sc1.nextInt();
 			}
+			/*
+			 * 
+			 * Ameliorable en formant une classe qui permet de compacter tout ca
+			 * 
+			 */
 			Town[] tab = new Town[choice]; 
 			for (int i = 0; i < tab.length; ++i) 
 			{
