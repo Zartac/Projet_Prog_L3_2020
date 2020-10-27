@@ -19,11 +19,26 @@ public class Main {
 		et blinder la saisie si l'utilsateur tape autre chose qu'un chiffre
 		-- Jack
 		*/
-		Town[] tab = new Town[choice]; 
-		for (int i = 0; i < tab.length; ++i) 
-		{
-			tab[i] = new Town(alphabet[i]); // On crée autant de ville que l'utilsateur a choisi
-			System.out.println(tab[i].getSerial() + ". La ville " + tab[i].getName() + " a été crée.");
+		if(choice>26) {
+			while(choice>26) {
+				System.out.println("La nombre choisit est incorrect");
+				System.out.println("Veuillez en ressaisir un autre : ");
+				choice = sc1.nextInt();
+			}
+			Town[] tab = new Town[choice]; 
+			for (int i = 0; i < tab.length; ++i) 
+			{
+				tab[i] = new Town(alphabet[i]); // On crée autant de ville que l'utilsateur a choisi
+				System.out.println(tab[i].getSerial() + ". La ville " + tab[i].getName() + " a été crée.");
+			}
+		}
+		else {
+			Town[] tab = new Town[choice]; 
+			for (int i = 0; i < tab.length; ++i) 
+			{
+				tab[i] = new Town(alphabet[i]); // On crée autant de ville que l'utilsateur a choisi
+				System.out.println(tab[i].getSerial() + ". La ville " + tab[i].getName() + " a été crée.");
+			}
 		}
 	}
 
