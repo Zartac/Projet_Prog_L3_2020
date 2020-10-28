@@ -18,11 +18,11 @@ public class Main {
 				,'L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' };
 		//Test Github
 		Display.displayLaunch();
-		System.out.println("==>Veuillez entrer le nombre de ville que vous voulez créer:");
+		System.out.println("==>Veuillez entrer le nombre de ville que vous voulez crï¿½er:");
 		Scanner sc1 = new Scanner(System.in);
 		int choice = sc1.nextInt();
 		/*
-		 * Erf, y'a un bug, quand tu entre 0 et ensuite un truc au dessus de 26, ça passe :/
+		 * Erf, y'a un bug, quand tu entre 0 et ensuite un truc au dessus de 26, ï¿½a passe :/
 		-- Jack
 		*/
 		if(choice>26 || choice <=0) {
@@ -33,7 +33,7 @@ public class Main {
 				System.out.println("==>Veuillez en ressaisir un autre : ");
 				choice = sc1.nextInt();
 			}
-			while(choice<=0) // Au cas où l'utilisateur troll -- Jack
+			while(choice<=0) // Au cas oï¿½ l'utilisateur troll -- Jack
 			{
 				System.out.println("<!>La nombre choisit est incorrect<!>");
 				System.out.println(">Vous ne pouvez pas avoir 0 villes ou moins.<");
@@ -48,19 +48,21 @@ public class Main {
 			Town[] tab = new Town[choice]; 
 			for (int i = 0; i < tab.length; ++i) 
 			{
-				tab[i] = new Town(alphabet[i]); // On crée autant de ville que l'utilsateur a choisi
-				System.out.println(tab[i].getSerial() + ". La ville " + tab[i].getName() + " a été crée.");
+				tab[i] = new Town(alphabet[i]); // On crï¿½e autant de ville que l'utilsateur a choisi
+				System.out.println(tab[i].getSerial() + ". La ville " + tab[i].getName() + " a ï¿½tï¿½ crï¿½e.");
 			}
 		}
 		else {
 			Town[] tab = new Town[choice]; 
 			for (int i = 0; i < tab.length; ++i) 
 			{
-				tab[i] = new Town(alphabet[i]); // On crée autant de ville que l'utilsateur a choisi
-				System.out.println(tab[i].getSerial() + ". La ville " + tab[i].getName() + " a été crée.");
+				tab[i] = new Town(alphabet[i]); // On crï¿½e autant de ville que l'utilsateur a choisi
+				System.out.println(tab[i].getSerial() + ". La ville " + tab[i].getName() + " a ï¿½tï¿½ crï¿½e.");
 			}
 		}
 		Display.displayInterface1();
 	}
 
 }
+
+//coucou
