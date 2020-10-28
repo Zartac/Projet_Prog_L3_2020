@@ -16,7 +16,6 @@ public class Main {
 	{
 		char[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K'
 				,'L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' };
-		//Test Github
 		Display.displayLaunch();
 		System.out.println("==>Veuillez entrer le nombre de ville que vous voulez cr�er:");
 		Scanner sc1 = new Scanner(System.in);
@@ -43,6 +42,7 @@ public class Main {
 			/*
 			 * 
 			 * Ameliorable en formant une classe qui permet de compacter tout ca
+			 * Johan
 			 * 
 			 */
 			Town[] tab = new Town[choice]; 
