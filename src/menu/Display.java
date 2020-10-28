@@ -1,6 +1,6 @@
 package menu;
 
-public class Launch 
+public class Display 
 {
 	public static void displayLaunch() // Oui, je pourrais améliorer ça... -- Jack
 	{

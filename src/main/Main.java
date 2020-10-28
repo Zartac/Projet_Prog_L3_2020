@@ -2,7 +2,7 @@ package main;
 
 import java.util.Scanner;
 import town.Town;
-import menu.Launch;
+import menu.Display;
 
 public class Main {
 	public static void main(String[]args)
@@ -10,7 +10,7 @@ public class Main {
 		char[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K'
 				,'L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' };
 		//Test Github
-		Launch.displayLaunch();
+		Display.displayLaunch();
 		System.out.println("Veuillez entrer le nombre de ville que vous voulez créer:");
 		Scanner sc1 = new Scanner(System.in);
 		int choice = sc1.nextInt();
