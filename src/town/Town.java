@@ -88,6 +88,8 @@ public class Town
 	    this.link = tabTemp;
 	}
 	
-
+/*
+ * TEST
+ */
 	
 }
