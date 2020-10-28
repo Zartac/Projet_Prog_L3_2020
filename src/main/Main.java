@@ -19,9 +19,18 @@ public class Main {
 		et blinder la saisie si l'utilsateur tape autre chose qu'un chiffre
 		-- Jack
 		*/
-		if(choice>26) {
-			while(choice>26) {
+		if(choice>26 || choice <=0) {
+			while(choice>26) 
+			{
+				System.out.println("Le nombre choisit est incorrect!");
+				System.out.println("Cette version du projet ne peut avoir plus de 26 villes.");
+				System.out.println("Veuillez en ressaisir un autre : ");
+				choice = sc1.nextInt();
+			}
+			while(choice<=0) // Au cas où l'utilisateur troll -- Jack
+			{
 				System.out.println("La nombre choisit est incorrect");
+				System.out.println("Vous ne pouvez pas avoir 0 villes ou moins.");
 				System.out.println("Veuillez en ressaisir un autre : ");
 				choice = sc1.nextInt();
 			}
