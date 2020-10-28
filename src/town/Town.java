@@ -1,5 +1,7 @@
 package town;
 
+import java.util.Arrays;
+
 /**
  * Classe pour la création et la modification de ville.
  * 
@@ -80,6 +82,10 @@ public class Town
 		/*
 		 * Il faudra peut être remplacer le int[] par une linked liste
 		 */
+	    int[] tabTemp = Arrays.copyOf(tab, tab.length + 1);
+	    tabTemp[tab.length - 1] = add;
+	    System.out.println(Arrays.toString(tabTemp));
+	    this.link = tabTemp;
 	}
 	
 
