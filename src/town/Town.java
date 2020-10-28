@@ -70,7 +70,17 @@ public class Town
 	public int[] getLink() 
 	{
 		return link;
-	}	
+	}
+	
+	/**
+	 * Ajoute un numéro dans une liste de d'adjacence.
+	 */
+	public void addToLink(int[] tab, int add) // à coder
+	{
+		/*
+		 * Il faudra peut être remplacer le int[] par une linked liste
+		 */
+	}
 	
 
 	
