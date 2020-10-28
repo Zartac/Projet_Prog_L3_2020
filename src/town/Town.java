@@ -87,7 +87,6 @@ public class Town
 	    System.out.println(Arrays.toString(tabTemp));
 	    this.link = tabTemp;
 	}
-	
 /*
  * TEST
  */
