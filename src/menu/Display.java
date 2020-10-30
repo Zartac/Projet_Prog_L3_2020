@@ -1,5 +1,7 @@
 package menu;
 
+import java.util.Scanner;
+
 /**
  * Classe pour l'affichage du sujet et des invites de commandes utilisateurs.
  * 
@@ -48,5 +50,45 @@ public class Display
 		System.out.println("|2. Fin.                                                      |");
 		System.out.println("|=============================================================|");
 	}
-
+	
+	/**
+	 * Affichage de l'ajout et retrait d'écoles.
+	 */
+	public static void displayInterface2() // Les options suivantes sont celle INDIQUE par le sujet! -- Jack
+	{
+		System.out.println("");
+		System.out.println("|=============================================================|");
+		System.out.println("|================== Ajout/Retrait d'écoles ===================|");
+		System.out.println("|=============================================================|");
+		System.out.println("|1. Ajouter une école.                                        |");
+		System.out.println("|2. Retirer une école.                                        |");
+		System.out.println("|3. Fin.                                                      |");
+		System.out.println("|=============================================================|");
+	}
+	
+	public static int displayCreateTown() // Les options suivantes sont celle INDIQUE par le sujet! -- Jack
+	{
+		int choice1;
+		do {
+			System.out.println("==>Veuillez entrer le nombre de ville que vous voulez créer:");
+			Scanner sc1 = new Scanner(System.in);
+			int tempChoice1 = sc1.nextInt();
+			choice1 = tempChoice1;
+			if (choice1 > 26 )
+			{
+				System.out.println("<!>Le nombre choisit est incorrect<!>");
+				System.out.println(">Cette version du projet ne peut avoir plus de 26 villes.<");
+			}
+			else if (choice1 <= 0)
+			{
+				System.out.println("<!>La nombre choisit est incorrect<!>");
+				System.out.println(">Vous ne pouvez pas avoir 0 villes ou moins.<");
+			}
+			else
+			{
+				System.out.println("Vous n'avez pas rentrer un choix valide!");
+			}
+		} while (choice1>26 || choice1<=0 );
+		return choice1;
+	}
 }

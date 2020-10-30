@@ -2,6 +2,8 @@ package town;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
 class TownTest {
@@ -21,6 +23,10 @@ class TownTest {
 			for (int j = 0; j < i; ++j)
 				assertNotEquals(tab[i].getSerial(), tab[j].getSerial()); // On vérifie que chaque ville a un serial différent
 		}
+		tab[0].addToLink(tab[0].getLink(),4); // On rajoute la ville 4 comme lien à la ville 1
+		tab[0].addToLink(tab[0].getLink(),5); // On rajoute la ville 5 comme lien à la ville 1
+		tab[0].addToLink(tab[0].getLink(),6); // On rajoute la ville 6 comme lien à la ville 1
+		assertEquals(Arrays.toString(tab[0].getLink()), "[4, 5, 6, 0]"); // On vérifie que la ville 1 a comme lien 4, 5 et 6
 	}
 
 }

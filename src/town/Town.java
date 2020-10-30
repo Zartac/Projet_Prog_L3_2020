@@ -27,6 +27,7 @@ public class Town
 		this.name=name;
 		serial = serialcounter;
 		setSchool(false);
+		this.link = new int[1];
 	}
 	
 	/**
@@ -79,12 +80,8 @@ public class Town
 	 */
 	public void addToLink(int[] tab, int add) // à coder
 	{
-		/*
-		 * Il faudra peut être remplacer le int[] par une linked liste
-		 */
 	    int[] tabTemp = Arrays.copyOf(tab, tab.length + 1);
 	    tabTemp[tab.length - 1] = add;
-	    System.out.println(Arrays.toString(tabTemp));
 	    this.link = tabTemp;
 	}
 /*

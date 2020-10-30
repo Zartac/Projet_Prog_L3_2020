@@ -1,5 +1,6 @@
 package main;
 
+import java.util.Arrays;
 import java.util.Scanner;
 import town.Town;
 import menu.Display;
@@ -17,50 +18,47 @@ public class Main {
 		char[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K'
 				,'L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' };
 		Display.displayLaunch();
-		System.out.println("==>Veuillez entrer le nombre de ville que vous voulez crï¿½er:");
-		Scanner sc1 = new Scanner(System.in);
-		int choice = sc1.nextInt();
-		/*
-		 * Erf, y'a un bug, quand tu entre 0 et ensuite un truc au dessus de 26, ï¿½a passe :/
-		-- Jack
-		*/
-		if(choice>26 || choice <=0) {
-			while(choice>26) 
-			{
-				System.out.println("<!>Le nombre choisit est incorrect<!>");
-				System.out.println(">Cette version du projet ne peut avoir plus de 26 villes.<");
-				System.out.println("==>Veuillez en ressaisir un autre : ");
-				choice = sc1.nextInt();
-			}
-			while(choice<=0) // Au cas oï¿½ l'utilisateur troll -- Jack
-			{
-				System.out.println("<!>La nombre choisit est incorrect<!>");
-				System.out.println(">Vous ne pouvez pas avoir 0 villes ou moins.<");
-				System.out.println("==>Veuillez en ressaisir un autre : ");
-				choice = sc1.nextInt();
-			}
-			/*
-			 * 
-			 * Ameliorable en formant une classe qui permet de compacter tout ca
-			 * Johan
-			 * 
-			 */
-			Town[] tab = new Town[choice]; 
-			for (int i = 0; i < tab.length; ++i) 
-			{
-				tab[i] = new Town(alphabet[i]); // On crï¿½e autant de ville que l'utilsateur a choisi
-				System.out.println(tab[i].getSerial() + ". La ville " + tab[i].getName() + " a ï¿½tï¿½ crï¿½e.");
-			}
+		int choice1=Display.displayCreateTown();
+		Town[] tab = new Town[choice1]; 
+		for (int i = 0; i < tab.length; ++i) 
+		{
+			tab[i] = new Town(alphabet[i]); // On crée autant de ville que l'utilsateur a choisi
+			System.out.println(tab[i].getSerial() + ". La ville " + tab[i].getName() + " a été crée.");
 		}
-		else {
-			Town[] tab = new Town[choice]; 
-			for (int i = 0; i < tab.length; ++i) 
+		int choice2;
+		do {
+			Display.displayInterface1();
+			System.out.println("==>Veuillez entrer votre choix:");
+			Scanner sc2 = new Scanner(System.in);
+			int tempChoice2 = sc2.nextInt();
+			choice2 = tempChoice2;
+			if (choice2 == 1)
 			{
-				tab[i] = new Town(alphabet[i]); // On crï¿½e autant de ville que l'utilsateur a choisi
-				System.out.println(tab[i].getSerial() + ". La ville " + tab[i].getName() + " a ï¿½tï¿½ crï¿½e.");
+				System.out.println("==>Veuillez entrer le numéro de la ville qui va avoir une route");
+				Scanner sc2_1 = new Scanner(System.in);
+				int town1 = sc2_1.nextInt();
+				System.out.println("===>Veuillez entrer le numéro de la ville qui va relier " +tab[town1-1].getSerial() + ". " + tab[town1-1].getName());
+				Scanner sc2_2 = new Scanner(System.in);
+				int town2 = sc2_2.nextInt();
+				tab[town1-1].addToLink(tab[town1-1].getLink(), town2);
+				System.out.println("La ville " + tab[town1-1].getSerial() + ". " + tab[town1-1].getName() + " est relié à" + Arrays.toString(tab[town1-1].getLink()));
 			}
-		}
-		Display.displayInterface1();
+			else if (choice2 == 2)
+			{
+				for (int i = 0; i < tab.length; ++i) 
+				{
+					tab[i].setSchool(true);
+					System.out.println("Une école a été établi par défaut dans la ville " +tab[i].getSerial() + ". " + tab[i].getName());
+				}
+				break;
+			}
+			else
+			{
+				System.out.println("Vous n'avez pas rentrer un choix valide!");
+			}
+		} while (choice2 != 2);
+		Display.displayInterface2();
+		
 	}
 
 }
