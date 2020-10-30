@@ -84,10 +84,6 @@ public class Display
 				System.out.println("<!>La nombre choisit est incorrect<!>");
 				System.out.println(">Vous ne pouvez pas avoir 0 villes ou moins.<");
 			}
-			else
-			{
-				System.out.println("Vous n'avez pas rentrer un choix valide!");
-			}
 		} while (choice1>26 || choice1<=0 );
 		return choice1;
 	}
