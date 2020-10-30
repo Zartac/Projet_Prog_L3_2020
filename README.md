@@ -14,5 +14,6 @@ Equipe:
 
 A coder:
 * Empêcher la création de route entre ville qui n'existe pas.
+* Améliorer l'affichage de la liste des liens.
 * Ajout d'une école dans une ville.
 * Retrait d'une école dans une ville.
