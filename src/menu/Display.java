@@ -1,6 +1,9 @@
 package menu;
 
+import java.util.Arrays;
 import java.util.Scanner;
+
+import town.Town;
 
 /**
  * Classe pour l'affichage du sujet et des invites de commandes utilisateurs.
@@ -87,4 +90,40 @@ public class Display
 		} while (choice1>26 || choice1<=0 );
 		return choice1;
 	}
+	
+	public static void displayCreateLink(Town[] tab) {
+		int choice2;
+		do {
+			Display.displayInterface1();
+			System.out.println("==>Veuillez entrer votre choix:");
+			Scanner sc2 = new Scanner(System.in);
+			int tempChoice2 = sc2.nextInt();
+			choice2 = tempChoice2;
+			if (choice2 == 1)
+			{
+				System.out.println("==>Veuillez entrer le numéro de la ville qui va avoir une route");
+				Scanner sc2_1 = new Scanner(System.in);
+				int town1 = sc2_1.nextInt();
+				System.out.println("===>Veuillez entrer le numéro de la ville qui va relier " +tab[town1-1].getSerial() + ". " + tab[town1-1].getName());
+				Scanner sc2_2 = new Scanner(System.in);
+				int town2 = sc2_2.nextInt();
+				tab[town1-1].addToLink(tab[town1-1].getLink(), town2);
+				System.out.println("La ville " + tab[town1-1].getSerial() + ". " + tab[town1-1].getName() + " est relié à" + Arrays.toString(tab[town1-1].getLink()));
+			}
+			else if (choice2 == 2)
+			{
+				for (int i = 0; i < tab.length; ++i) 
+				{
+					tab[i].setSchool(true);
+					System.out.println("Une école a été établi par défaut dans la ville " +tab[i].getSerial() + ". " + tab[i].getName());
+				}
+				break;
+			}
+			else
+			{
+				System.out.println("Vous n'avez pas rentrer un choix valide!");
+			}
+		} while (choice2 != 2);
+	}
+	
 }
