@@ -1,6 +1,5 @@
 package menu;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 import town.Town;
@@ -108,14 +107,14 @@ public class Display
 				Scanner sc2_2 = new Scanner(System.in);
 				int town2 = sc2_2.nextInt();
 				tab[town1-1].addToLink(tab[town1-1].getLink(), town2);
-				System.out.println("La ville " + tab[town1-1].getSerial() + ". " + tab[town1-1].getName() + " est relié à" + Arrays.toString(tab[town1-1].getLink()));
+				System.out.println(ToString.toStringLinkCreated(tab[town1-1]));
 			}
 			else if (choice2 == 2)
 			{
 				for (int i = 0; i < tab.length; ++i) 
 				{
 					tab[i].setSchool(true);
-					System.out.println("Une école a été établi par défaut dans la ville " +tab[i].getSerial() + ". " + tab[i].getName());
+					System.out.println(ToString.toStringDefaultSchool(tab[i]));
 				}
 				break;
 			}
