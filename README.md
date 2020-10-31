@@ -1,7 +1,7 @@
 # Projet_Prog_L3_2020
-Projet de programmations pour JGM (le frÃ©ro)
+Projet de programmations pour JGM (le fréro)
 
-IDE ConseillÃ©:
+IDE Conseillé:
 * Eclipse 2020
 
 Langage:
@@ -13,7 +13,8 @@ Equipe:
 * Jack Thay
 
 A coder:
-* EmpÃªcher la crÃ©ation de route entre ville qui n'existe pas.
-* AmÃ©liorer l'affichage de la liste des liens.
-* Ajout d'une Ã©cole dans une ville.
-* Retrait d'une Ã©cole dans une ville.
+* Empêcher la création de route entre ville qui n'existe pas.
+* Améliorer la création de route: quand on ajoute un lien dans la ville 1 vers 2, on doit aussi avoir ville 2 vers 1. 
+* Compléter Javadoc.
+* ORTHOGRAPHE!
+* Créer des test pour ToString?
