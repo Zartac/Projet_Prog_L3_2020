@@ -86,6 +86,7 @@ public class Display
 				System.out.println("<!>La nombre choisit est incorrect<!>");
 				System.out.println(">Vous ne pouvez pas avoir 0 villes ou moins.<");
 			}
+			sc1.close();
 		} while (choice1>26 || choice1<=0 );
 		return choice1;
 	}
@@ -108,6 +109,8 @@ public class Display
 				int town2 = sc2_2.nextInt();
 				tab[town1-1].addToLink(tab[town1-1].getLink(), town2);
 				System.out.println(ToString.toStringLinkCreated(tab[town1-1]));
+				sc2_1.close();
+				sc2_2.close();
 			}
 			else if (choice2 == 2)
 			{
@@ -122,6 +125,7 @@ public class Display
 			{
 				System.out.println("Vous n'avez pas rentrer un choix valide!");
 			}
+			sc2.close();
 		} while (choice2 != 2);
 	}
 	
