@@ -19,12 +19,7 @@ public class Main {
 				,'L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' };
 		Display.displayLaunch();
 		int choice1=Display.displayCreateTown();
-		Town[] tab = new Town[choice1]; 
-		for (int i = 0; i < tab.length; ++i) 
-		{
-			tab[i] = new Town(alphabet[i]); // On crée autant de ville que l'utilsateur a choisi
-			System.out.println(tab[i].getSerial() + ". La ville " + tab[i].getName() + " a été crée.");
-		}
+		Town[] tab = Town.createTownLoop(choice1,alphabet);	
 		Display.displayCreateLink(tab);
 		Display.displayInterface2();
 		//test

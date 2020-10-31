@@ -84,8 +84,15 @@ public class Town
 	    tabTemp[tab.length - 1] = add;
 	    this.link = tabTemp;
 	}
-/*
- * TEST
- */
+	
+	public static Town[] createTownLoop(int choice1, char[] alphabet) {
+		Town[] tab = new Town[choice1]; 
+		for (int i = 0; i < tab.length; ++i) 
+		{
+			tab[i] = new Town(alphabet[i]); // On crée autant de ville que l'utilsateur a choisi
+			System.out.println(tab[i].getSerial() + ". La ville " + tab[i].getName() + " a été crée.");
+		}
+		return tab;
+	}
 	
 }
