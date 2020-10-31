@@ -96,4 +96,13 @@ public class Town
 		return tab;
 	}
 	
+	public static boolean checkLink(Town[] ville, int a) {
+		int[] temp=ville[a-1].getLink();
+		boolean check=false;
+		for(int i=0; i<temp.length-1;i++) {
+			if(ville[i].isSchool()==true) check=true;
+		}
+		return check;
+	}
+	
 }

@@ -86,7 +86,6 @@ public class Display
 				System.out.println("<!>La nombre choisit est incorrect<!>");
 				System.out.println(">Vous ne pouvez pas avoir 0 villes ou moins.<");
 			}
-			sc1.close();
 		} while (choice1>26 || choice1<=0 );
 		return choice1;
 	}
@@ -109,8 +108,6 @@ public class Display
 				int town2 = sc2_2.nextInt();
 				tab[town1-1].addToLink(tab[town1-1].getLink(), town2);
 				System.out.println(ToString.toStringLinkCreated(tab[town1-1]));
-				sc2_1.close();
-				sc2_2.close();
 			}
 			else if (choice2 == 2)
 			{
@@ -125,8 +122,50 @@ public class Display
 			{
 				System.out.println("Vous n'avez pas rentrer un choix valide!");
 			}
-			sc2.close();
 		} while (choice2 != 2);
 	}
 	
+	public static void displaySchool(Town[] tab) {
+		int choice3;
+		do {
+			Display.displayInterface2();
+			System.out.println("==>Veuillez entrer votre choix:");
+			Scanner sc3 = new Scanner(System.in);
+			int tempChoice3 = sc3.nextInt();
+			choice3 = tempChoice3;
+			if (choice3 == 1)
+			{
+				System.out.println("==>Veuillez entrer le numéro de la ville qui va avoir une nouvelle école");
+				Scanner sc3_1 = new Scanner(System.in);
+				int town = sc3_1.nextInt();
+				if(tab[town-1].isSchool()==true) System.out.println("Cette ville possède déjà une école");
+				else if (tab[town-1].isSchool()==false) {
+					tab[town-1].setSchool(true);
+					System.out.println("La ville "+ tab[town-1].getSerial() + "a reçu une école");
+				}
+			}
+			else if (choice3 == 2)
+			{
+				System.out.println("==>Veuillez entrer le numéro de la ville qui va perdre son école");
+				Scanner sc3_2 = new Scanner(System.in);
+				int town = sc3_2.nextInt();
+				if(tab[town-1].isSchool()==true) {
+					if(tab[town-1].checkLink(tab, town)==true) {
+						tab[town-1].setSchool(false);
+						System.out.println("La ville "+ tab[town-1].getSerial() + " a perdu son école");
+					}
+					else System.out.println("La ville "+ tab[town-1].getSerial() + " n'est pas rattaché à une école");
+				}
+				else if (tab[town-1].isSchool()==false) System.out.println("Cette ville n'a pas d'école");
+			}
+			else if (choice3 == 3)
+			{
+				break;
+			}
+			else
+			{
+				System.out.println("Vous n'avez pas rentrer un choix valide!");
+			}
+		} while (choice3 != 3);
+	}
 }

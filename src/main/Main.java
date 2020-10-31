@@ -19,7 +19,7 @@ public class Main {
 		int choice1=Display.displayCreateTown();
 		Town[] tab = Town.createTownLoop(choice1,alphabet);	
 		Display.displayCreateLink(tab);
-		Display.displayInterface2();
+		Display.displaySchool(tab);
 	}
 
 }
