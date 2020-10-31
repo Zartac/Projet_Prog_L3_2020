@@ -6,6 +6,13 @@ import org.junit.jupiter.api.Test;
 
 import menu.ToString;
 
+/**
+ * Classe de test pour la classe "Town.java".
+ * 
+ * @author Amanda Messahel, Johan Laforge, Jack Thay
+ * 
+ *
+ */
 class TownTest {
 
 	@Test
@@ -27,7 +34,8 @@ class TownTest {
 		tab[0].addToLink(tab[0].getLink(),4); // On rajoute la ville 4 comme lien à la ville 1
 		tab[0].addToLink(tab[0].getLink(),5); // On rajoute la ville 5 comme lien à la ville 1
 		tab[0].addToLink(tab[0].getLink(),6); // On rajoute la ville 6 comme lien à la ville 1
-		assertEquals(ToString.toStringLink(tab[0].getLink()), "4, 5, 6."); // On vérifie que la ville 1 a comme lien 4, 5 et 6
+		assertEquals(ToString.toStringLink(tab[0].getLink()), "4, 5, 6."); // On vérifie que la ville 1 a comme lien 4, 5 et 6.
+		assertEquals(false, tab[0].checkLink(tab, 1)); // On vérifie que la ville 1 n'est pas relié a une ville avec une école.
 	}
 
 }

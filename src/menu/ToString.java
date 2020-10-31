@@ -2,6 +2,13 @@ package menu;
 
 import town.Town;
 
+/**
+ * Classe pour l'utilisation de String.
+ * 
+ * @author Amanda Messahel, Johan Laforge, Jack Thay
+ * 
+ *
+ */
 public class ToString {
 	
 	public static String toStringLink(int[] ti)
@@ -42,7 +49,34 @@ public class ToString {
 		if (tab == null)
 			return "null";
 		String b;
-		b = "Une école a été établi par défaut dans la ville " +tab.getSerial() + ". " + tab.getName();
+		b = "Une école a été établi par défaut dans la ville " +tab.getSerial() + ". " + tab.getName() + ".";
+		return b.toString();
+	}
+	
+	public static String toStringSchoolAdded(Town tab)
+	{
+		if (tab == null)
+			return "null";
+		String b;
+		b = "Une école a été ajouté dans la ville "+tab.getSerial() + ". " + tab.getName()+ ".";
+		return b.toString();
+	}
+	
+	public static String toStringSchoolRemoved(Town tab)
+	{
+		if (tab == null)
+			return "null";
+		String b;
+		b = "Une école a été retiré dans la ville "+tab.getSerial() + ". " + tab.getName()+ ".";
+		return b.toString();
+	}
+	
+	public static String toStringNoSchool(Town tab)
+	{
+		if (tab == null)
+			return "null";
+		String b;
+		b = "La ville "+tab.getSerial() + ". " + tab.getName() + " est isolé ou n'est pas relié à une ville avec une école.";
 		return b.toString();
 	}
 }

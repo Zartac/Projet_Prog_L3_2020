@@ -20,9 +20,9 @@ public class Town
 	
 	/**
 	 * Création basique d'une ville sans école, cette ville a un numéro de série unique.
-	 * @param name le nom qu'on veut donner
+	 * @param name le nom qu'on veut donner à la ville
 	 */
-	public Town(String name) //Penser à bouger en String pour les prochaines parties
+	public Town(String name)
 	{
 		++serialcounter;
 		this.name=name;
@@ -33,7 +33,7 @@ public class Town
 	
 	/**
 	 * Récupère le nom de la ville.
-	 * @return Nom de la ville.
+	 * @return name Récupère le nom de la ville.
 	 */
 	public String getName() 
 	{
@@ -42,7 +42,7 @@ public class Town
 
 	/**
 	 * Récupère le numéro de série de la ville.
-	 * @return Numéro de série.
+	 * @return serial Numéro de série de la ville.
 	 */
 	public int getSerial() 
 	{
@@ -51,7 +51,7 @@ public class Town
 
 	/**
 	 * Vérifie la présence ou non d'une école dans la ville.
-	 * @return True/False sur l'existence de l'école.
+	 * @return school True/False sur l'existence de l'école.
 	 */
 	public boolean isSchool() 
 	{
@@ -60,7 +60,7 @@ public class Town
 
 	/**
 	 * Ajoute ou retire une école dans cette ville.
-	 * @param value (True/False).
+	 * @param value la valeur qui modifiera la présence de l'école. 
 	 */
 	public void setSchool(boolean value) 
 	{
@@ -68,8 +68,8 @@ public class Town
 	}
 
 	/**
-	 * Récupère la liste des voisins de cette ville.
-	 * @return Tableau de "int".
+	 * Récupère la liste des voisins de cette ville (liste d'adjacence).
+	 * @return link tableau de "int" qui représente une liste d'adjacence.
 	 */
 	public int[] getLink() 
 	{
@@ -77,7 +77,9 @@ public class Town
 	}
 	
 	/**
-	 * Ajoute un numéro dans la liste de d'adjacence.
+	 * Ajoute un numéro dans la liste de d'adjacence, le dernier numéro de cette liste sera toujours "0".
+	 * @param tab tableau de int, qui représente la liste d'adjacence de la ville.
+	 * @param add numéro de série de la ville à ajouter dans la liste d'adjacence.
 	 */
 	public void addToLink(int[] tab, int add) // à coder
 	{
@@ -86,6 +88,12 @@ public class Town
 	    this.link = tabTemp;
 	}
 	
+	/**
+	 * Crée plusieurs villes, attention, le tableau de ville commence avec l'indice 0!
+	 * @param choice le nombre de ville voulu.
+	 * @param name liste de noms qui sera utilisé pour nommer les villes.
+	 * @return tab tableau de "Town", ensemble de ville.
+	 */
 	public static Town[] createTownLoop(int choice, String[] name) {
 		Town[] tab = new Town[choice]; 
 		for (int i = 0; i < tab.length; ++i) 
@@ -96,11 +104,17 @@ public class Town
 		return tab;
 	}
 	
-	public static boolean checkLink(Town[] ville, int a) {
-		int[] temp=ville[a-1].getLink();
+	/**
+	 * Vérifie, pour une ville donné, sa liste d'adjacence.
+	 * @param ville le tableau de ville a analyser.
+	 * @param choice le numéro de série de la ville dont on va vérifier la liste d'adjacence.
+	 */
+	public boolean checkLink(Town[] ville, int choice) {
+		int[] tempList=ville[choice-1].getLink(); // -1 à choice car le tableau commence depuis 0 et les serials depuis 1
 		boolean check=false;
-		for(int i=0; i<temp.length-1;i++) {
-			if(ville[i].isSchool()==true) check=true;
+		for(int i=0; i<tempList.length-1;i++) { // -1 car nous ne voulons pas qu'il consulte le "0" se trouvant à la fin de la liste.
+			int tempNumber = tempList[i];
+			if(ville[tempNumber-1].isSchool()==true) check=true; // -1 à tempNumber car le tableau commence depuis 0 et les serials depuis 1
 		}
 		return check;
 	}

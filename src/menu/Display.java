@@ -40,39 +40,66 @@ public class Display
 	}
 	
 	/**
-	 * Affichage de la création de liens entre villes.
+	 * Affichage des choix lors de la création de liens entre villes.
 	 */
-	public static void displayInterface1() // Les options suivantes sont celle INDIQUE par le sujet! -- Jack
+	public static void displayInterface1() // Les options suivantes sont identique à celle du sujet! -- Jack
 	{
 		System.out.println("");
 		System.out.println("|=============================================================|");
 		System.out.println("|============== Création de route entre villes ===============|");
 		System.out.println("|=============================================================|");
-		System.out.println("|1. Ajouter une route.                                        |");
-		System.out.println("|2. Fin.                                                      |");
+		System.out.println("|1) Ajouter une route.                                        |");
+		System.out.println("|2) Fin.                                                      |");
 		System.out.println("|=============================================================|");
 	}
 	
 	/**
-	 * Affichage de l'ajout et retrait d'écoles.
+	 * Affichage des choix lors de l'ajout et retrait d'écoles.
 	 */
-	public static void displayInterface2() // Les options suivantes sont celle INDIQUE par le sujet! -- Jack
+	public static void displayInterface2() // Les options suivantes sont identique à celle du sujet! -- Jack
 	{
 		System.out.println("");
 		System.out.println("|=============================================================|");
 		System.out.println("|================== Ajout/Retrait d'écoles ===================|");
 		System.out.println("|=============================================================|");
-		System.out.println("|1. Ajouter une école.                                        |");
-		System.out.println("|2. Retirer une école.                                        |");
-		System.out.println("|3. Fin.                                                      |");
+		System.out.println("|1) Ajouter une école.                                        |");
+		System.out.println("|2) Retirer une école.                                        |");
+		System.out.println("|3) Fin.                                                      |");
 		System.out.println("|=============================================================|");
 	}
 	
-	public static int displayCreateTown() // Les options suivantes sont celle INDIQUE par le sujet! -- Jack
+	public static void displayEasterEgg()
+	{
+		String song[] = { // J'y tiens à mon RickRoll! -- Jack
+				"But we will:",
+				">Never gonna give you up",
+                ">>Never gonna let you down",
+                ">>>Never gonna run around and desert you",
+                ">>>>Never gonna make you cry",
+                ">>>>>Never gonna say goodbye",
+                ">>>>>>Never gonna tell a lie and hurt you"
+            };
+		System.out.println("");
+		System.out.println("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");
+		System.out.println("|~~~~~~~~~~~~~~~~~~ <!> 2020's the worst <!> ~~~~~~~~~~~~~~~~~|");
+		System.out.println("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");
+
+            for (int i = 0; i < song.length; ++i) {
+            	try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					Thread.currentThread().interrupt();
+					e.printStackTrace();
+				}
+                System.out.println(song[i]);
+            }
+	}
+	
+	public static int displayCreateTown()
 	{
 		int choice1;
 		do {
-			System.out.println("==>Veuillez entrer le nombre de ville que vous voulez créer:");
+			System.out.println("==>Veuillez entrer le nombre de ville(s) que vous voulez créer:");
 			Scanner sc1 = new Scanner(System.in);
 			int tempChoice1 = sc1.nextInt();
 			choice1 = tempChoice1;
@@ -83,7 +110,7 @@ public class Display
 			}
 			else if (choice1 <= 0)
 			{
-				System.out.println("<!>La nombre choisit est incorrect<!>");
+				System.out.println("<!>Le nombre choisit est incorrect<!>");
 				System.out.println(">Vous ne pouvez pas avoir 0 villes ou moins.<");
 			}
 		} while (choice1>26 || choice1<=0 );
@@ -103,7 +130,7 @@ public class Display
 				System.out.println("==>Veuillez entrer le numéro de la ville qui va avoir une route");
 				Scanner sc2_1 = new Scanner(System.in);
 				int town1 = sc2_1.nextInt();
-				System.out.println("===>Veuillez entrer le numéro de la ville qui va relier " +tab[town1-1].getSerial() + ". " + tab[town1-1].getName());
+				System.out.println("===>Veuillez entrer le numéro de la ville qui va relier " +tab[town1-1].getSerial() + ". " + tab[town1-1].getName()+ ".");
 				Scanner sc2_2 = new Scanner(System.in);
 				int town2 = sc2_2.nextInt();
 				tab[town1-1].addToLink(tab[town1-1].getLink(), town2);
@@ -117,6 +144,10 @@ public class Display
 					System.out.println(ToString.toStringDefaultSchool(tab[i]));
 				}
 				break;
+			}
+			else if (choice2 == 2020)
+			{
+				displayEasterEgg();
 			}
 			else
 			{
@@ -141,7 +172,7 @@ public class Display
 				if(tab[town-1].isSchool()==true) System.out.println("Cette ville possède déjà une école");
 				else if (tab[town-1].isSchool()==false) {
 					tab[town-1].setSchool(true);
-					System.out.println("La ville "+ tab[town-1].getSerial() + "a reçu une école");
+					System.out.println(ToString.toStringSchoolAdded(tab[town-1]));
 				}
 			}
 			else if (choice3 == 2)
@@ -152,15 +183,19 @@ public class Display
 				if(tab[town-1].isSchool()==true) {
 					if(tab[town-1].checkLink(tab, town)==true) {
 						tab[town-1].setSchool(false);
-						System.out.println("La ville "+ tab[town-1].getSerial() + " a perdu son école");
+						System.out.println(ToString.toStringSchoolRemoved(tab[town-1]));
 					}
-					else System.out.println("La ville "+ tab[town-1].getSerial() + " n'est pas rattaché à une école");
+					else System.out.println(ToString.toStringNoSchool(tab[town-1]));
 				}
 				else if (tab[town-1].isSchool()==false) System.out.println("Cette ville n'a pas d'école");
 			}
 			else if (choice3 == 3)
 			{
 				break;
+			}
+			else if (choice3 == 2020)
+			{
+				displayEasterEgg();
 			}
 			else
 			{
