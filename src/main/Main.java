@@ -1,6 +1,6 @@
 package main;
 
-import town.Town;
+import agglomeration.Town;
 import menu.Display;
 
 /**

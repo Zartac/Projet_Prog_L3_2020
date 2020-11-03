@@ -13,8 +13,8 @@ Equipe:
 * Jack Thay
 
 A coder:
-* Empêcher la création de route entre ville qui n'existe pas.
-* Améliorer la création de route: quand on ajoute un lien dans la ville 1 vers 2, on doit aussi avoir ville 2 vers 1. 
-* Compléter Javadoc.
+* Convertir la liste d'adjacence de int[] à ArrayList. (pas dans l'immédiat)
+* Vérifier la nomenclature du code.
+* Compléter Javadoc la classe Display et ToString.
 * ORTHOGRAPHE!
 * Créer des test pour ToString?

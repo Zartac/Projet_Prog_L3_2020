@@ -1,9 +1,13 @@
 package menu;
 
-import town.Town;
+import agglomeration.Town;
 
 /**
- * Classe pour l'utilisation de String.
+ * Classe pour l'utilisation de String nécessaire à l'affichage des messages.
+ * Format des messages:
+ * Invite de commande: ==> message:
+ * Erreur: <!>message<!>
+ * Operation réussi: *message*
  * 
  * @author Amanda Messahel, Johan Laforge, Jack Thay
  * 
@@ -16,7 +20,7 @@ public class ToString {
 		if (ti == null)
 			return "null";
 		StringBuilder b = new StringBuilder("");
-		for (int i = 0; i < ti.length-1; ++i)
+		for (int i = 0; i < ti.length-1; ++i) // -1 pour pas qu'il affiche le 0 situé à la fin du tableau
 		{
 			if (i > 0)
 				b.append(", ");
@@ -31,7 +35,7 @@ public class ToString {
 		if (tab == null)
 			return "null";
 		String b;
-		b = tab.getSerial() + ". La ville " + tab.getName() + " a été crée.";
+		b = "*" + tab.getSerial() + ". La ville " + tab.getName() + " a été crée*";
 		return b.toString();
 	}
 	
@@ -40,7 +44,7 @@ public class ToString {
 		if (tab == null)
 			return "null";
 		String b;
-		b = "La ville " + tab.getSerial() + ". " + tab.getName() + " est relié à la ville " + ToString.toStringLink(tab.getLink());
+		b = "*La ville " + tab.getSerial() + ". " + tab.getName() + " est relié à la ville " + ToString.toStringLink(tab.getLink())+"*";
 		return b.toString();
 	}
 	
@@ -49,7 +53,7 @@ public class ToString {
 		if (tab == null)
 			return "null";
 		String b;
-		b = "Une école a été établi par défaut dans la ville " +tab.getSerial() + ". " + tab.getName() + ".";
+		b = "<!>Une école a été établi par défaut dans la ville " +tab.getSerial() + ". " + tab.getName() + "<!>";
 		return b.toString();
 	}
 	
@@ -58,7 +62,7 @@ public class ToString {
 		if (tab == null)
 			return "null";
 		String b;
-		b = "Une école a été ajouté dans la ville "+tab.getSerial() + ". " + tab.getName()+ ".";
+		b = "*Une école a été ajouté dans la ville "+tab.getSerial() + ". " + tab.getName()+ "*";
 		return b.toString();
 	}
 	
@@ -67,7 +71,7 @@ public class ToString {
 		if (tab == null)
 			return "null";
 		String b;
-		b = "Une école a été retiré dans la ville "+tab.getSerial() + ". " + tab.getName()+ ".";
+		b = "*Une école a été retiré dans la ville "+tab.getSerial() + ". " + tab.getName()+ "*";
 		return b.toString();
 	}
 	
@@ -76,7 +80,35 @@ public class ToString {
 		if (tab == null)
 			return "null";
 		String b;
-		b = "La ville "+tab.getSerial() + ". " + tab.getName() + " est isolé ou n'est pas relié à une ville avec une école.";
+		b = "<!>La ville "+tab.getSerial() + ". " + tab.getName() + " est isolé ou n'est pas relié à une autre ville avec une école<!>";
+		return b.toString();
+	}
+	
+	public static String toStringLinkExist(Town tab1, Town tab2)
+	{
+		if (tab1 == null || tab2 == null)
+			return "null";
+		String b;
+		b = "<!>La ville " +tab1.getSerial() + ". " + tab1.getName() + " est déjà relié à " +tab2.getSerial() + ". " + tab2.getName() + "<!>";
+		return b.toString();
+	}
+	
+	public static String toStringSchoolList(Town ville[])
+	{
+		if (ville == null)
+			return "null";
+		StringBuilder b = new StringBuilder("");
+		b.append("*Les villes avec école : ");
+		for (int i = 0; i < ville.length; ++i) // boucle qui permet de parcourir le tableau de ville
+		{
+			if (ville[i].isSchool() == true)
+			{
+				if (i > 0)
+					b.append(" ");
+				b.append(ville[i].getName());
+			}
+		}
+		b.append("*");
 		return b.toString();
 	}
 }

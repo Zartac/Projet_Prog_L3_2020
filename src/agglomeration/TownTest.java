@@ -1,4 +1,4 @@
-package town;
+package agglomeration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,11 +31,12 @@ class TownTest {
 			for (int j = 0; j < i; ++j)
 				assertNotEquals(tab[i].getSerial(), tab[j].getSerial()); // On vérifie que chaque ville a un serial différent
 		}
+		assertEquals(true, Town.checkTownExist(tab, 1)); // On vérifie que la ville 1 existe dans notre tableau de ville.
 		tab[0].addToLink(tab[0].getLink(),4); // On rajoute la ville 4 comme lien à la ville 1
 		tab[0].addToLink(tab[0].getLink(),5); // On rajoute la ville 5 comme lien à la ville 1
 		tab[0].addToLink(tab[0].getLink(),6); // On rajoute la ville 6 comme lien à la ville 1
 		assertEquals(ToString.toStringLink(tab[0].getLink()), "4, 5, 6."); // On vérifie que la ville 1 a comme lien 4, 5 et 6.
-		assertEquals(false, tab[0].checkLink(tab, 1)); // On vérifie que la ville 1 n'est pas relié a une ville avec une école.
+		assertEquals(false, Town.checkLinkSchool(tab, 1)); // On vérifie que la ville 1 n'est pas relié a une ville avec une école.
 	}
 
 }

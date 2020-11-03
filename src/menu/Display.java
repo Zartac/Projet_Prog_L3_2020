@@ -2,7 +2,7 @@ package menu;
 
 import java.util.Scanner;
 
-import town.Town;
+import agglomeration.Town;
 
 /**
  * Classe pour l'affichage du sujet et des invites de commandes utilisateurs.
@@ -68,6 +68,9 @@ public class Display
 		System.out.println("|=============================================================|");
 	}
 	
+	/**
+	 * Affichage du Easter Egg, tradition du DUT AS de l'IUT Descartes!
+	 */
 	public static void displayEasterEgg()
 	{
 		String song[] = { // J'y tiens à mon RickRoll! -- Jack
@@ -106,12 +109,12 @@ public class Display
 			if (choice1 > 26 )
 			{
 				System.out.println("<!>Le nombre choisit est incorrect<!>");
-				System.out.println(">Cette version du projet ne peut avoir plus de 26 villes.<");
+				System.out.println("<!>Cette version du projet ne peut avoir plus de 26 villes<!>");
 			}
 			else if (choice1 <= 0)
 			{
 				System.out.println("<!>Le nombre choisit est incorrect<!>");
-				System.out.println(">Vous ne pouvez pas avoir 0 villes ou moins.<");
+				System.out.println("<!>Vous ne pouvez pas avoir 0 villes ou moins<!>");
 			}
 		} while (choice1>26 || choice1<=0 );
 		return choice1;
@@ -125,33 +128,58 @@ public class Display
 			Scanner sc2 = new Scanner(System.in);
 			int tempChoice2 = sc2.nextInt();
 			choice2 = tempChoice2;
-			if (choice2 == 1)
+			if (choice2 == 1) // l'utilisateur veut créer une route
 			{
-				System.out.println("==>Veuillez entrer le numéro de la ville qui va avoir une route");
+				System.out.println("===>Veuillez entrer le numéro de la ville qui va avoir une route");
 				Scanner sc2_1 = new Scanner(System.in);
-				int town1 = sc2_1.nextInt();
-				System.out.println("===>Veuillez entrer le numéro de la ville qui va relier " +tab[town1-1].getSerial() + ". " + tab[town1-1].getName()+ ".");
-				Scanner sc2_2 = new Scanner(System.in);
-				int town2 = sc2_2.nextInt();
-				tab[town1-1].addToLink(tab[town1-1].getLink(), town2);
-				System.out.println(ToString.toStringLinkCreated(tab[town1-1]));
+				int town1 = sc2_1.nextInt(); // =choix1
+				if (Town.checkTownExist(tab,town1)==true) // On vérifie que le choix 1 éxiste
+				{
+					System.out.println("====>Veuillez entrer le numéro de la ville qui va relier " +tab[town1-1].getSerial() + ". " + tab[town1-1].getName() + ".");
+					Scanner sc2_2 = new Scanner(System.in);
+					int town2 = sc2_2.nextInt(); // =choix2
+					// Code converti d'Amanda
+					if (town1==town2) // On vérifie que l'utilisateur n'essaye pas de créer une route d'une ville a elle même
+					{
+						System.out.println("<!>Nous ne pouvons créer une route d'une ville vers elle même<!>");
+					}
+					else if(Town.checkLinkExist(tab[town1-1], town2)) // On vérifie que choix 1 est pas déjà relié choix 2
+					{
+						System.out.println(ToString.toStringLinkExist(tab[town1-1], tab[town2-1]));
+					}
+					else if(Town.checkTownExist(tab,town2)==true) // On vérifie que les 2 villes éxiste
+					{
+						tab[town1-1].addToLink(tab[town1-1].getLink(), town2); // On ajoute le choix 2 de l'utilisateur dans la liste d'adjacence du choix 1
+						System.out.println(ToString.toStringLinkCreated(tab[town1-1])); // On affiche la liste d'adjacence du choix 1
+						tab[town2-1].addToLink(tab[town2-1].getLink(), town1); // On ajoute le choix 1 de l'utilisateur dans la liste d'adjacence du choix 2
+						System.out.println(ToString.toStringLinkCreated(tab[town2-1])); // On affiche la liste d'adjacence du choix 2
+					}
+					else // on suppose que le 2ème choix l'utilisateur n'existe pas
+					{
+						System.out.println("<!>La ville "+ town2 +" n'existe pas<!>");
+					}
+				}
+				else // on suppose que le 1er choix l'utilisateur n'existe pas
+				{
+					System.out.println("<!>La ville "+ town1 +" n'existe pas<!>");
+				}
 			}
-			else if (choice2 == 2)
+			else if (choice2 == 2) // l'utilisateur a fini la création de route
 			{
 				for (int i = 0; i < tab.length; ++i) 
 				{
-					tab[i].setSchool(true);
+					tab[i].setSchool(true); // on ajoute une école par défaut dans chaque ville
 					System.out.println(ToString.toStringDefaultSchool(tab[i]));
 				}
 				break;
 			}
-			else if (choice2 == 2020)
+			else if (choice2 == 2020) // l'utilisateur est au courant de notre Easter Egg ;)
 			{
 				displayEasterEgg();
 			}
-			else
+			else // l'utilisateur tape un choix qui n'existe pas
 			{
-				System.out.println("Vous n'avez pas rentrer un choix valide!");
+				System.out.println("<!>Vous n'avez pas entré un choix valide<!>");
 			}
 		} while (choice2 != 2);
 	}
@@ -164,42 +192,44 @@ public class Display
 			Scanner sc3 = new Scanner(System.in);
 			int tempChoice3 = sc3.nextInt();
 			choice3 = tempChoice3;
-			if (choice3 == 1)
+			if (choice3 == 1) // l'utilisateur choisi d'ajouter une école
 			{
 				System.out.println("==>Veuillez entrer le numéro de la ville qui va avoir une nouvelle école");
 				Scanner sc3_1 = new Scanner(System.in);
 				int town = sc3_1.nextInt();
-				if(tab[town-1].isSchool()==true) System.out.println("Cette ville possède déjà une école");
-				else if (tab[town-1].isSchool()==false) {
+				if(tab[town-1].isSchool()==true) System.out.println("<!>Cette ville possède déjà une école<!>"); // on vérifie que la ville n'a pas déjà une école
+				else if (tab[town-1].isSchool()==false) { // si cette ville n'a pas d'école
 					tab[town-1].setSchool(true);
 					System.out.println(ToString.toStringSchoolAdded(tab[town-1]));
 				}
+				System.out.println(ToString.toStringSchoolList(tab));
 			}
-			else if (choice3 == 2)
+			else if (choice3 == 2) // l'utilisateur choisi de retirer une école
 			{
 				System.out.println("==>Veuillez entrer le numéro de la ville qui va perdre son école");
 				Scanner sc3_2 = new Scanner(System.in);
 				int town = sc3_2.nextInt();
 				if(tab[town-1].isSchool()==true) {
-					if(tab[town-1].checkLink(tab, town)==true) {
+					if(Town.checkLinkSchool(tab, town)==true) {
 						tab[town-1].setSchool(false);
 						System.out.println(ToString.toStringSchoolRemoved(tab[town-1]));
 					}
 					else System.out.println(ToString.toStringNoSchool(tab[town-1]));
 				}
-				else if (tab[town-1].isSchool()==false) System.out.println("Cette ville n'a pas d'école");
+				else if (tab[town-1].isSchool()==false) System.out.println("<!>Cette ville n'a pas d'école<!>");
+				System.out.println(ToString.toStringSchoolList(tab));
 			}
-			else if (choice3 == 3)
+			else if (choice3 == 3) // l'utilisateur met fin au programme
 			{
 				break;
 			}
-			else if (choice3 == 2020)
+			else if (choice3 == 2020) // l'utilisateur est au courant de notre Easter Egg ;)
 			{
 				displayEasterEgg();
 			}
-			else
+			else // l'utilisateur tape un choix qui n'existe pas
 			{
-				System.out.println("Vous n'avez pas rentrer un choix valide!");
+				System.out.println("<!>Vous n'avez pas entré un choix valide<!>");
 			}
 		} while (choice3 != 3);
 	}
