@@ -194,7 +194,7 @@ public class Display
 			choice3 = tempChoice3;
 			if (choice3 == 1) // l'utilisateur choisi d'ajouter une école
 			{
-				System.out.println("==>Veuillez entrer le numéro de la ville qui va avoir une nouvelle école");
+				System.out.println("===>Veuillez entrer le numéro de la ville qui va avoir une nouvelle école");
 				Scanner sc3_1 = new Scanner(System.in);
 				int town = sc3_1.nextInt();
 				if(tab[town-1].isSchool()==true) System.out.println("<!>Cette ville possède déjà une école<!>"); // on vérifie que la ville n'a pas déjà une école
@@ -206,7 +206,7 @@ public class Display
 			}
 			else if (choice3 == 2) // l'utilisateur choisi de retirer une école
 			{
-				System.out.println("==>Veuillez entrer le numéro de la ville qui va perdre son école");
+				System.out.println("===>Veuillez entrer le numéro de la ville qui va perdre son école");
 				Scanner sc3_2 = new Scanner(System.in);
 				int town = sc3_2.nextInt();
 				if(tab[town-1].isSchool()==true) {

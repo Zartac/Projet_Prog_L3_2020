@@ -33,7 +33,7 @@ public class Town
 	
 	/**
 	 * Récupère le nom de la ville.
-	 * @return name Récupère le nom de la ville.
+	 * @return name nom de la ville.
 	 */
 	public String getName() 
 	{
@@ -42,7 +42,7 @@ public class Town
 
 	/**
 	 * Récupère le numéro de série de la ville.
-	 * @return serial Numéro de série de la ville.
+	 * @return serial numéro de série de la ville.
 	 */
 	public int getSerial() 
 	{

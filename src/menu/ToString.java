@@ -44,7 +44,7 @@ public class ToString {
 		if (tab == null)
 			return "null";
 		String b;
-		b = "*La ville " + tab.getSerial() + ". " + tab.getName() + " est relié à la ville " + ToString.toStringLink(tab.getLink())+"*";
+		b = "*La ville " + tab.getSerial() + ". " + tab.getName() + " est relié(s) à(aux) la ville(s) " + ToString.toStringLink(tab.getLink())+"*";
 		return b.toString();
 	}
 	
@@ -53,7 +53,7 @@ public class ToString {
 		if (tab == null)
 			return "null";
 		String b;
-		b = "<!>Une école a été établi par défaut dans la ville " +tab.getSerial() + ". " + tab.getName() + "<!>";
+		b = "*Une école a été établi par défaut dans la ville " +tab.getSerial() + ". " + tab.getName() + "*";
 		return b.toString();
 	}
 	
@@ -98,13 +98,12 @@ public class ToString {
 		if (ville == null)
 			return "null";
 		StringBuilder b = new StringBuilder("");
-		b.append("*Les villes avec école : ");
+		b.append("*Les villes avec école :");
 		for (int i = 0; i < ville.length; ++i) // boucle qui permet de parcourir le tableau de ville
 		{
 			if (ville[i].isSchool() == true)
 			{
-				if (i > 0)
-					b.append(" ");
+				b.append(" ");
 				b.append(ville[i].getName());
 			}
 		}
