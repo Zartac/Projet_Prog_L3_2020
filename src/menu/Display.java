@@ -98,6 +98,9 @@ public class Display
             }
 	}
 	
+	/**
+	 * Affichage des invites de commandes utilisateurs pour créer des villes.
+	 */
 	public static int displayCreateTown()
 	{
 		int choice1;
@@ -120,6 +123,10 @@ public class Display
 		return choice1;
 	}
 	
+	/**
+	 * Affichage des invites de commandes utilisateurs pour créer des routes entre villes.
+	 * @param tab tableau de ville crée précédemment
+	 */
 	public static void displayCreateLink(Town[] tab) {
 		int choice2;
 		do {
@@ -184,6 +191,10 @@ public class Display
 		} while (choice2 != 2);
 	}
 	
+	/**
+	 * Affichage des invites de commandes utilisateurs pour ajouter ou retirer des écoles dans une ville.
+	 * @param tab tableau de ville précedemment crée
+	 */
 	public static void displaySchool(Town[] tab) {
 		int choice3;
 		do {
