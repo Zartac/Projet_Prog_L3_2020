@@ -231,6 +231,9 @@ public class Display
 			}
 			else if (choice3 == 3) // l'utilisateur met fin au programme
 			{
+				System.out.println("|=============================================================|");
+				System.out.println("|================== Fin du programme =========================|");
+				System.out.println("|=============================================================|");
 				break;
 			}
 			else if (choice3 == 2020) // l'utilisateur est au courant de notre Easter Egg ;)
