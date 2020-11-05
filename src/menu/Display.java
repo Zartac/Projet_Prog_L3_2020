@@ -105,7 +105,7 @@ public class Display
 	{
 		int choice1;
 		do {
-			System.out.println("==>Veuillez entrer le nombre de ville(s) que vous voulez créer:");
+			System.out.println("==>Veuillez entrer le nombre de ville(s) que vous voulez créer :");
 			Scanner sc1 = new Scanner(System.in);
 			int tempChoice1 = sc1.nextInt();
 			choice1 = tempChoice1;
@@ -131,13 +131,13 @@ public class Display
 		int choice2;
 		do {
 			Display.displayInterface1();
-			System.out.println("==>Veuillez entrer votre choix:");
+			System.out.println("==>Veuillez entrer votre choix :");
 			Scanner sc2 = new Scanner(System.in);
 			int tempChoice2 = sc2.nextInt();
 			choice2 = tempChoice2;
 			if (choice2 == 1) // l'utilisateur veut créer une route
 			{
-				System.out.println("===>Veuillez entrer le numéro de la ville qui va avoir une route");
+				System.out.println("===>Veuillez entrer le numéro de la ville qui va avoir une route :");
 				Scanner sc2_1 = new Scanner(System.in);
 				int town1 = sc2_1.nextInt(); // =choix1
 				if (Town.checkTownExist(tab,town1)==true) // On vérifie que le choix 1 éxiste
@@ -198,13 +198,13 @@ public class Display
 		int choice3;
 		do {
 			Display.displayInterface2();
-			System.out.println("==>Veuillez entrer votre choix:");
+			System.out.println("==>Veuillez entrer votre choix :");
 			Scanner sc3 = new Scanner(System.in);
 			int tempChoice3 = sc3.nextInt();
 			choice3 = tempChoice3;
 			if (choice3 == 1) // l'utilisateur choisi d'ajouter une école
 			{
-				System.out.println("===>Veuillez entrer le numéro de la ville qui va avoir une nouvelle école");
+				System.out.println("===>Veuillez entrer le numéro de la ville qui va avoir une nouvelle école :");
 				Scanner sc3_1 = new Scanner(System.in);
 				int town = sc3_1.nextInt();
 				if(tab[town-1].isSchool()==true) System.out.println("<!>Cette ville possède déjà une école<!>"); // on vérifie que la ville n'a pas déjà une école
@@ -216,7 +216,7 @@ public class Display
 			}
 			else if (choice3 == 2) // l'utilisateur choisi de retirer une école
 			{
-				System.out.println("===>Veuillez entrer le numéro de la ville qui va perdre son école");
+				System.out.println("===>Veuillez entrer le numéro de la ville qui va perdre son école :");
 				Scanner sc3_2 = new Scanner(System.in);
 				int town = sc3_2.nextInt();
 				if(tab[town-1].isSchool()==true) {
