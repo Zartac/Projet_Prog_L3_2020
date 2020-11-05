@@ -16,7 +16,7 @@ public class Display
 	/**
 	 * Affichage de la problématique menant à ce projet.
 	 */
-	public static void displayLaunch() // Oui, je pourrais améliorer ça... -- Jack
+	public static void displayLaunch()
 	{
 		System.out.println("|=============================================================|");
 		System.out.println("|======== Projet Programmation: Construction d'écoles ========|");
@@ -42,7 +42,7 @@ public class Display
 	/**
 	 * Affichage des choix lors de la création de liens entre villes.
 	 */
-	public static void displayInterface1() // Les options suivantes sont identique à celle du sujet! -- Jack
+	public static void displayInterface1()
 	{
 		System.out.println("");
 		System.out.println("|=============================================================|");
@@ -56,7 +56,7 @@ public class Display
 	/**
 	 * Affichage des choix lors de l'ajout et retrait d'écoles.
 	 */
-	public static void displayInterface2() // Les options suivantes sont identique à celle du sujet! -- Jack
+	public static void displayInterface2()
 	{
 		System.out.println("");
 		System.out.println("|=============================================================|");
