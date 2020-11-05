@@ -17,9 +17,9 @@ public class Main {
 				,"L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z" };
 		Display.displayLaunch();
 		int choice1=Display.displayCreateTown();
-		Town[] tab = Town.createTownLoop(choice1,alphabet);	
-		Display.displayCreateLink(tab);
-		Display.displaySchool(tab);
+		Town[] villeTab = Town.createTownLoop(choice1,alphabet);	
+		Display.displayCreateLink(villeTab);
+		Display.displaySchool(villeTab);
 	}
 
 }

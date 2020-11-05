@@ -106,11 +106,11 @@ public class Town
 	
 	/**
 	 * Vérifie, pour une ville donné, sa liste d'adjacence et si une ville voisine a une école.
-	 * @param villeTab[] le tableau de ville a analyser.
+	 * @param villeTab le tableau de ville a analyser.
 	 * @param choice le numéro de série de la ville dont on vérifie la liste d'adjacence pour voir si un voisin a une école.
 	 * @return check vérifie dans la liste d'adjacence si la ville n°"choice" possède une ville voisine avec une école.
 	 */
-	public static boolean checkLinkSchool(Town villeTab[], int choice) {
+	public static boolean checkLinkSchool(Town[] villeTab, int choice) {
 		int[] tempList=villeTab[choice-1].getLink(); // -1 à choice car le tableau commence depuis 0 et les serials depuis 1
 		boolean check=false;
 		for(int i=0; i<tempList.length-1;i++) {
@@ -122,11 +122,11 @@ public class Town
 	
 	/**
 	 * Vérifie, selon un choix donné, si cette ville existe dans un tableau de ville.
-	 * @param villeTab[] le tableau de ville à analyser.
+	 * @param villeTab le tableau de ville à analyser.
 	 * @param serial le numéro de série de la ville dont on veut vérifier l'existence.
 	 * @return true/false si en effet la ville n°"serial" existe dans le tableau de ville "villeTab[]".
 	 */
-	public static boolean checkTownExist(Town villeTab[], int serial) // fonction récupéré d'Amanda
+	public static boolean checkTownExist(Town[] villeTab, int serial) // fonction récupéré d'Amanda
 	{
 		for (int i = 0; i < villeTab.length; ++i) // boucle qui permet de parcourir le tableau de ville
 		{

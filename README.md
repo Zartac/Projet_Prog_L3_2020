@@ -14,5 +14,4 @@ Equipe:
 
 A coder:
 * Convertir la liste d'adjacence de int[] à ArrayList. (pas dans l'immédiat)
-* ORTHOGRAPHE!
 * Créer des test pour ToString?
