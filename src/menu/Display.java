@@ -30,7 +30,7 @@ public class Display
 		System.out.println("|l’éducation, un élu souhaite construire de nouvelles écoles, |");
 		System.out.println("|modernes, dans la communauté d’agglomération dont il est     |");
 		System.out.println("|responsable.                                                 |");
-		System.out.println("|Durant la campagne électorale, il a promis deux choses:      |");
+		System.out.println("|Durant la campagne électorale, il a promit deux choses:      |");
 		System.out.println("| -Chaque ville doit posséder son école, ou être directement  |");
 		System.out.println("|  reliée à une ville qui possède une école.                  |");
 		System.out.println("| -Le coût du projet doit être le plus bas possible, ce qui   |");

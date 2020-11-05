@@ -5,8 +5,8 @@ import agglomeration.Town;
 /**
  * Classe pour l'utilisation de String nécessaire à l'affichage des messages.
  * Format des messages:
- * Invite de commande: ==> message:
- * Invite de commande secondaire: ===> message:
+ * Invite de commande: ==> message :
+ * Invite de commande secondaire: ===> message :
  * Erreur: <!>message<!>
  * Operation réussi: *message*
  * 
@@ -39,7 +39,7 @@ public class ToString {
 	/**
 	 * Affichage confirmation de création de ville.
 	 * @param villeUnique objet ville
-	 * @return b sous format *0. La ville X a été crée*.
+	 * @return b sous format *0. La ville X a été créée*.
 	 */
 	public static String toStringTownCreated(Town villeUnique)
 	{
@@ -67,7 +67,7 @@ public class ToString {
 	/**
 	 * Affichage confirmation de création d'école par défaut.
 	 * @param villeUnique objet ville
-	 * @return b sous format *Une école a été établie par défaut dans la ville 0. X*.
+	 * @return b sous format *Une école a été établi par défaut dans la ville 0. X*.
 	 */
 	public static String toStringDefaultSchool(Town villeUnique)
 	{
@@ -81,7 +81,7 @@ public class ToString {
 	/**
 	 * Affichage confirmation d'ajout d'école dans une ville.
 	 * @param villeUnique objet ville
-	 * @return b sous format Une école a été ajouté dans la ville 0. X*.
+	 * @return b sous format "Une école a été ajouté dans la ville 0. X*.
 	 */
 	public static String toStringSchoolAdded(Town villeUnique)
 	{
@@ -136,8 +136,8 @@ public class ToString {
 	}
 	
 	/**
-	 * Affichage liste d'école éxistante dans une agglomération.
-	 * @param villeTab tableau de ville qu'on veut examiné
+	 * Affichage liste d'école existante dans une agglomération.
+	 * @param villeTab tableau de ville qu'on veut examiner
 	 * @return b sous format *Les villes avec école: X X X X X*
 	 */
 	public static String toStringSchoolList(Town[] villeTab)
