@@ -73,7 +73,7 @@ public class Display
 	 */
 	public static void displayEasterEgg()
 	{
-		String song[] = { // J'y tiens à mon RickRoll! -- Jack
+		String song[] = {
 				"But we will:",
 				">Never gonna give you up",
                 ">>Never gonna let you down",
@@ -125,7 +125,7 @@ public class Display
 	
 	/**
 	 * Affichage des invites de commandes utilisateurs pour créer des routes entre villes.
-	 * @param tab tableau de ville crée précédemment
+	 * @param tab tableau de ville créé précédemment
 	 */
 	public static void displayCreateLink(Town[] tab) {
 		int choice2;
@@ -145,7 +145,6 @@ public class Display
 					System.out.println("====>Veuillez entrer le numéro de la ville qui va relier " +tab[town1-1].getSerial() + ". " + tab[town1-1].getName() + ".");
 					Scanner sc2_2 = new Scanner(System.in);
 					int town2 = sc2_2.nextInt(); // =choix2
-					// Code converti d'Amanda
 					if (town1==town2) // On vérifie que l'utilisateur n'essaye pas de créer une route d'une ville a elle même
 					{
 						System.out.println("<!>Nous ne pouvons créer une route d'une ville vers elle même<!>");
@@ -193,7 +192,7 @@ public class Display
 	
 	/**
 	 * Affichage des invites de commandes utilisateurs pour ajouter ou retirer des écoles dans une ville.
-	 * @param tab tableau de ville précedemment crée
+	 * @param tab tableau de ville précedemment créé
 	 */
 	public static void displaySchool(Town[] tab) {
 		int choice3;
