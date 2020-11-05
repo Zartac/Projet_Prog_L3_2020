@@ -4,7 +4,7 @@ import java.util.Arrays;
 import menu.ToString;
 
 /**
- * Classe pour la création et la modification de ville.
+ * Classe pour la création et la modification de villes.
  * 
  * @author Amanda Messahel, Johan Laforge, Jack Thay
  * 
@@ -51,7 +51,7 @@ public class Town
 
 	/**
 	 * Vérifie la présence ou non d'une école dans la ville.
-	 * @return school true/false si en effet, il existe une ecole dans cette ville.
+	 * @return school true/false si en effet, il existe une école dans cette ville.
 	 */
 	public boolean isSchool() 
 	{
@@ -89,7 +89,7 @@ public class Town
 	}
 	
 	/**
-	 * Crée plusieurs villes, attention, le tableau de ville commence avec l'indice 0!
+	 * Créer plusieurs villes, attention, le tableau de ville commence avec l'indice 0!
 	 * @param choice le nombre de ville voulu.
 	 * @param name liste de noms qui sera utilisé pour nommer les villes.
 	 * @return tab tableau de "Town", ensemble de ville qui aura pour nombre "choice".
@@ -107,8 +107,8 @@ public class Town
 	/**
 	 * Vérifie, pour une ville donné, sa liste d'adjacence et si une ville voisine a une école.
 	 * @param villeTab[] le tableau de ville a analyser.
-	 * @param choice le numéro de série de la ville dont on va vérifier la liste d'adjacence pour voir si un voisin a une école.
-	 * @return check si en effet dans la liste d'adjacence de la ville n°"choice", il y'a une ville voisine avec une école.
+	 * @param choice le numéro de série de la ville dont on vérifie la liste d'adjacence pour voir si un voisin a une école.
+	 * @return check vérifie dans la liste d'adjacence si la ville n°"choice" possède une ville voisine avec une école.
 	 */
 	public static boolean checkLinkSchool(Town villeTab[], int choice) {
 		int[] tempList=villeTab[choice-1].getLink(); // -1 à choice car le tableau commence depuis 0 et les serials depuis 1
@@ -122,7 +122,7 @@ public class Town
 	
 	/**
 	 * Vérifie, selon un choix donné, si cette ville existe dans un tableau de ville.
-	 * @param villeTab[] le tableau de ville a analyser.
+	 * @param villeTab[] le tableau de ville à analyser.
 	 * @param serial le numéro de série de la ville dont on veut vérifier l'existence.
 	 * @return true/false si en effet la ville n°"serial" existe dans le tableau de ville "villeTab[]".
 	 */
