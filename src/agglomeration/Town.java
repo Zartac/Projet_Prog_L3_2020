@@ -1,6 +1,6 @@
 package agglomeration;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import menu.ToString;
 
 /**
@@ -16,7 +16,8 @@ public class Town
 	private String name;
 	private int serial;
 	private boolean school;
-	private int[] link; // convertir la liste d'adjacence link en Arraylist prochainement
+	/*private int[] link; // convertir la liste d'adjacence link en Arraylist prochainement*/
+	ArrayList<Integer> link;
 	
 	/**
 	 * Création basique d'une ville sans école, cette ville a un numéro de série unique.
@@ -28,7 +29,7 @@ public class Town
 		this.name=name;
 		serial = serialcounter;
 		setSchool(false);
-		this.link = new int[1]; // ce tableau aura toujours un 0 à la fin
+		this.link = new ArrayList<Integer>(); // ce tableau aura toujours un 0 à la fin
 	}
 	
 	/**
@@ -71,7 +72,7 @@ public class Town
 	 * Récupère la liste des voisins de cette ville (liste d'adjacence).
 	 * @return link tableau de "int" qui représente une liste d'adjacence.
 	 */
-	public int[] getLink() 
+	public ArrayList<Integer> getLink() 
 	{
 		return link;
 	}
@@ -81,10 +82,10 @@ public class Town
 	 * @param listeAdj tableau de int, qui représente la liste d'adjacence de la ville.
 	 * @param add numéro de série de la ville à ajouter dans la liste d'adjacence.
 	 */
-	public void addToLink(int[] listeAdj, int add) // à coder
+	public void addToLink(ArrayList<Integer> listeAdj, int add) // à coder
 	{
-	    int[] tabTemp = Arrays.copyOf(listeAdj, listeAdj.length + 1);
-	    tabTemp[listeAdj.length - 1] = add;
+		ArrayList<Integer> tabTemp = this.link;
+		tabTemp.add(add);
 	    this.link = tabTemp;
 	}
 	
@@ -111,10 +112,10 @@ public class Town
 	 * @return check vérifie dans la liste d'adjacence si la ville n°"choice" possède une ville voisine avec une école.
 	 */
 	public static boolean checkLinkSchool(Town[] villeTab, int choice) {
-		int[] tempList=villeTab[choice-1].getLink(); // -1 à choice car le tableau commence depuis 0 et les serials depuis 1
+		ArrayList<Integer> tempList=villeTab[choice].getLink(); // -1 à choice car le tableau commence depuis 0 et les serials depuis 1
 		boolean check=false;
-		for(int i=0; i<tempList.length-1;i++) {
-			int tempNumber = tempList[i]; // On met en mémoire la valeur de la liste d'adjacence en position "i".
+		for(int i=0; i<tempList.size();i++) {
+			int tempNumber = tempList.get(i); // On met en mémoire la valeur de la liste d'adjacence en position "i".
 			if(villeTab[tempNumber-1].isSchool()==true) check=true; // -1 à tempNumber car le tableau commence depuis 0 et les serials depuis 1
 		}
 		return check;
@@ -143,10 +144,10 @@ public class Town
 	 * @return true/false si en effet la ville "villeUnique" n'est pas déjà relié à la ville n°"verif".
 	 */
 	public static boolean checkLinkExist(Town villeUnique, int verif) {
-		int[] tempList=villeUnique.getLink(); // on met en mémoire la liste d'adjacence de la ville ciblé
-		for(int i=0; i<tempList.length-1;i++) 
+		ArrayList<Integer> tempList=villeUnique.getLink(); // on met en mémoire la liste d'adjacence de la ville ciblé
+		for(int i=0; i<tempList.size();i++) 
 		{
-			if (tempList[i]==verif) // on vérifie si le numéro verif existe déjà dans la liste d'adjacence
+			if (tempList.get(i)==verif) // on vérifie si le numéro verif existe déjà dans la liste d'adjacence
 				return true;
 		}
 		return false;

@@ -1,5 +1,7 @@
 package menu;
 
+import java.util.ArrayList;
+
 import agglomeration.Town;
 
 /**
@@ -21,16 +23,16 @@ public class ToString {
 	 * @param listeAdj liste d'adjacence
 	 * @return b sous format 0, 0, 0.
 	 */
-	public static String toStringLink(int[] listeAdj)
+	public static String toStringLink(ArrayList<Integer> listeAdj)
 	{
 		if (listeAdj == null)
 			return "null";
 		StringBuilder b = new StringBuilder("");
-		for (int i = 0; i < listeAdj.length-1; ++i) // -1 pour pas qu'il affiche le 0 situé à la fin du tableau
+		for (int i = 0; i < listeAdj.size(); ++i) // -1 pour pas qu'il affiche le 0 situé à la fin du tableau
 		{
 			if (i > 0)
 				b.append(", ");
-			b.append(listeAdj[i]);
+			b.append(listeAdj.get(i));
 		}
 		b.append(".");
 		return b.toString();
