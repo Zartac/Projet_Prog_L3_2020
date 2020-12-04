@@ -13,5 +13,5 @@ Equipe:
 * Jack Thay
 
 A coder:
-* Convertir la liste d'adjacence de int[] à ArrayList. (pas dans l'immédiat)
+* Rendu 2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! HAAAAAAAAAAAAAAAAAAAAAAAA!!!!
 * Créer des test pour ToString?
