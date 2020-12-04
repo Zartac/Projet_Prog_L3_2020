@@ -29,7 +29,7 @@ public class Town
 		this.name=name;
 		serial = serialcounter;
 		setSchool(false);
-		this.link = new ArrayList<Integer>(); // ce tableau aura toujours un 0 à la fin
+		this.link = new ArrayList<Integer>();
 	}
 	
 	/**
