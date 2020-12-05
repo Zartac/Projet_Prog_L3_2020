@@ -1,5 +1,6 @@
 package menu;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import agglomeration.Town;
@@ -115,11 +116,9 @@ public class Display
 	public static int displayCreateTown()
 	{
 		int choice1;
+		String commandPrompt = "==>Veuillez entrer le nombre de ville(s) que vous voulez créer :";
 		do {
-			System.out.println("==>Veuillez entrer le nombre de ville(s) que vous voulez créer :");
-			Scanner sc1 = new Scanner(System.in);
-			int tempChoice1 = sc1.nextInt();
-			choice1 = tempChoice1;
+			choice1 = protectedIntInput(commandPrompt);
 			if (choice1 > 26 )
 			{
 				System.out.println("<!>Le nombre choisit est incorrect<!>");
@@ -140,22 +139,18 @@ public class Display
 	 */
 	public static void displayCreateLink(Town[] villeTab) {
 		int choice2;
+		String commandPrompt2 = "==>Veuillez entrer votre choix :";
 		do {
 			Display.displayInterface1();
-			System.out.println("==>Veuillez entrer votre choix :");
-			Scanner sc2 = new Scanner(System.in);
-			int tempChoice2 = sc2.nextInt();
-			choice2 = tempChoice2;
+			choice2 = protectedIntInput(commandPrompt2);
 			if (choice2 == 1) // l'utilisateur veut créer une route
 			{
-				System.out.println("===>Veuillez entrer le numéro de la ville qui va avoir une route :");
-				Scanner sc2_1 = new Scanner(System.in);
-				int town1 = sc2_1.nextInt(); // =choix1
+				String commandPrompt2_1 = "===>Veuillez entrer le numéro de la ville qui va avoir une route :";
+				int town1 = protectedIntInput(commandPrompt2_1); // = choix 1
 				if (Town.checkTownExist(villeTab,town1)==true) // On vérifie que le choix 1 éxiste
 				{
-					System.out.println("====>Veuillez entrer le numéro de la ville qui va relier " +villeTab[town1-1].getSerial() + ". " + villeTab[town1-1].getName() + ".");
-					Scanner sc2_2 = new Scanner(System.in);
-					int town2 = sc2_2.nextInt(); // =choix2
+					String commandPrompt2_2 = "====>Veuillez entrer le numéro de la ville qui va relier " +villeTab[town1-1].getSerial() + ". " + villeTab[town1-1].getName() + ".";
+					int town2 = protectedIntInput(commandPrompt2_2); // = choix 2
 					if (town1==town2) // On vérifie que l'utilisateur n'essaye pas de créer une route d'une ville a elle même
 					{
 						System.out.println("<!>Nous ne pouvons créer une route d'une ville vers elle même<!>");
@@ -207,17 +202,14 @@ public class Display
 	 */
 	public static void displaySchool(Town[] villeTab) {
 		int choice3;
+		String commandPrompt3 = "==>Veuillez entrer votre choix :";
 		do {
 			Display.displayInterface2();
-			System.out.println("==>Veuillez entrer votre choix :");
-			Scanner sc3 = new Scanner(System.in);
-			int tempChoice3 = sc3.nextInt();
-			choice3 = tempChoice3;
+			choice3 = protectedIntInput(commandPrompt3);
 			if (choice3 == 1) // l'utilisateur choisi d'ajouter une école
 			{
-				System.out.println("===>Veuillez entrer le numéro de la ville qui va avoir une nouvelle école :");
-				Scanner sc3_1 = new Scanner(System.in);
-				int town = sc3_1.nextInt();
+				String commandPrompt3_1 = "===>Veuillez entrer le numéro de la ville qui va avoir une nouvelle école :";
+				int town = protectedIntInput(commandPrompt3_1);
 				if(villeTab[town-1].isSchool()==true) System.out.println("<!>Cette ville possède déjà une école<!>"); // on vérifie que la ville n'a pas déjà une école
 				else if (villeTab[town-1].isSchool()==false) { // si cette ville n'a pas d'école
 					villeTab[town-1].setSchool(true);
@@ -227,9 +219,8 @@ public class Display
 			}
 			else if (choice3 == 2) // l'utilisateur choisi de retirer une école
 			{
-				System.out.println("===>Veuillez entrer le numéro de la ville qui va perdre son école :");
-				Scanner sc3_2 = new Scanner(System.in);
-				int town = sc3_2.nextInt();
+				String commandPrompt3_2 = "===>Veuillez entrer le numéro de la ville qui va perdre son école :";
+				int town = protectedIntInput(commandPrompt3_2);
 				if(villeTab[town-1].isSchool()==true) {
 					if(Town.checkLinkSchool(villeTab, town)==true) {
 						villeTab[town-1].setSchool(false);
@@ -254,5 +245,30 @@ public class Display
 				System.out.println("<!>Vous n'avez pas entré un choix valide<!>");
 			}
 		} while (choice3 != 3);
+	}
+	
+	/**
+	 * Affichage des invites de commandes utilisateurs pour saisir un nombre, si erreur, on redemande à l'utilisateur.
+	 * @param prompt la question a posé à l'utilisateur avant qu'il tape sa saisie
+	 * @return tempInt le nombre entré par l'utilisateur lorsqu'il n'a pas fait d'erreur.
+	 */
+	public static int protectedIntInput(String prompt)
+	{
+		boolean correct = false;
+		Scanner sc = new Scanner(System.in);
+		int tempInt=0;
+		do {
+			System.out.println(prompt);
+			try 
+			{
+				tempInt = sc.nextInt();
+				correct = true;
+			} catch(InputMismatchException e ) {
+				System.out.println("<!>Erreur de saisie<!>");
+				System.out.println("<!>Vous devez saisir un nombre<!>");
+				sc.nextLine();
+			}
+		} while(!correct);
+		return tempInt;
 	}
 }

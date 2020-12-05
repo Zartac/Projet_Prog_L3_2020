@@ -112,7 +112,7 @@ public class Town
 	 * @return check vérifie dans la liste d'adjacence si la ville n°"choice" possède une ville voisine avec une école.
 	 */
 	public static boolean checkLinkSchool(Town[] villeTab, int choice) {
-		ArrayList<Integer> tempList=villeTab[choice].getLink(); // -1 à choice car le tableau commence depuis 0 et les serials depuis 1
+		ArrayList<Integer> tempList=villeTab[choice-1].getLink(); // -1 à choice car le tableau commence depuis 0 et les serials depuis 1
 		boolean check=false;
 		for(int i=0; i<tempList.size();i++) {
 			int tempNumber = tempList.get(i); // On met en mémoire la valeur de la liste d'adjacence en position "i".

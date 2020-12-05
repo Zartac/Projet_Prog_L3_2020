@@ -13,11 +13,10 @@ Equipe:
 * Jack Thay
 
 A coder:
-* Charger les sauvegardes
+* Charger les sauvegardes (un petit début)
 * Convertir le texte de la sauvegarde en donnée qu'on peut utiliser
 * Convertir les algorithmes du profs
 * Créer un algorithme perso (pas urgent)
 * Créer les sauvegardes
-* Tenter les try/catch
 * sc.close() à caser
 * Créer des test pour ToString?

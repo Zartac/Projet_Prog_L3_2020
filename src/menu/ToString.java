@@ -28,7 +28,7 @@ public class ToString {
 		if (listeAdj == null)
 			return "null";
 		StringBuilder b = new StringBuilder("");
-		for (int i = 0; i < listeAdj.size(); ++i) // -1 pour pas qu'il affiche le 0 situé à la fin du tableau
+		for (int i = 0; i < listeAdj.size(); ++i)
 		{
 			if (i > 0)
 				b.append(", ");
