@@ -201,7 +201,6 @@ public class Display
 	 * @param villeTab tableau de ville précedemment créé
 	 */
 	public static void displaySchool(Town[] villeTab) {
-		//TODO: empêcher la selection d'école inéxistante.
 		int choice3;
 		String commandPrompt3 = "==>Veuillez entrer votre choix :";
 		do {
