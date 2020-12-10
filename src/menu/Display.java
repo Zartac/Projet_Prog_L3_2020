@@ -201,6 +201,7 @@ public class Display
 	 * @param villeTab tableau de ville précedemment créé
 	 */
 	public static void displaySchool(Town[] villeTab) {
+		//TODO: empêcher la selection d'école inéxistante.
 		int choice3;
 		String commandPrompt3 = "==>Veuillez entrer votre choix :";
 		do {
@@ -210,26 +211,42 @@ public class Display
 			{
 				String commandPrompt3_1 = "===>Veuillez entrer le numéro de la ville qui va avoir une nouvelle école :";
 				int town = protectedIntInput(commandPrompt3_1);
-				if(villeTab[town-1].isSchool()==true) System.out.println("<!>Cette ville possède déjà une école<!>"); // on vérifie que la ville n'a pas déjà une école
-				else if (villeTab[town-1].isSchool()==false) { // si cette ville n'a pas d'école
-					villeTab[town-1].setSchool(true);
-					System.out.println(ToString.toStringSchoolAdded(villeTab[town-1]));
+				if (Town.checkTownExist(villeTab,town)==true) // On vérifie que la ville existe
+				{
+					if(villeTab[town-1].isSchool()==true) System.out.println("<!>Cette ville possède déjà une école<!>"); // on vérifie que la ville n'a pas déjà une école
+					else if (villeTab[town-1].isSchool()==false) { // si cette ville n'a pas d'école
+						villeTab[town-1].setSchool(true);
+						System.out.println(ToString.toStringSchoolAdded(villeTab[town-1]));
+					}
+					System.out.println(ToString.toStringSchoolList(villeTab));
 				}
-				System.out.println(ToString.toStringSchoolList(villeTab));
+				else // on suppose que le choix l'utilisateur n'existe pas
+				{
+					System.out.println("<!>La ville "+ town +" n'existe pas<!>");
+				}
 			}
 			else if (choice3 == 2) // l'utilisateur choisi de retirer une école
 			{
 				String commandPrompt3_2 = "===>Veuillez entrer le numéro de la ville qui va perdre son école :";
 				int town = protectedIntInput(commandPrompt3_2);
-				if(villeTab[town-1].isSchool()==true) {
-					if(Town.checkLinkSchool(villeTab, town)==true) {
-						villeTab[town-1].setSchool(false);
-						System.out.println(ToString.toStringSchoolRemoved(villeTab[town-1]));
+				if (Town.checkTownExist(villeTab,town)==true) // On vérifie que la ville existe
+				{
+					if(villeTab[town-1].isSchool()==true) // On vérifie qu'il y'a une école à retirer.
+					{
+						if(Town.checkLinkSchool(villeTab, town)==true) // On vérifie la liste d'adjacence de la ville
+						{
+							villeTab[town-1].setSchool(false);
+							System.out.println(ToString.toStringSchoolRemoved(villeTab[town-1]));
+						}
+						else System.out.println(ToString.toStringNoSchool(villeTab[town-1]));
 					}
-					else System.out.println(ToString.toStringNoSchool(villeTab[town-1]));
+					else if (villeTab[town-1].isSchool()==false) System.out.println("<!>Cette ville n'a pas d'école<!>");
+					System.out.println(ToString.toStringSchoolList(villeTab));
 				}
-				else if (villeTab[town-1].isSchool()==false) System.out.println("<!>Cette ville n'a pas d'école<!>");
-				System.out.println(ToString.toStringSchoolList(villeTab));
+				else // on suppose que le choix l'utilisateur n'existe pas
+				{
+					System.out.println("<!>La ville "+ town +" n'existe pas<!>");
+				}
 			}
 			else if (choice3 == 3) // l'utilisateur met fin au programme
 			{
@@ -254,6 +271,7 @@ public class Display
 	 */
 	public static int protectedIntInput(String prompt)
 	{
+		//TODO: trouver où mettre le sc.close()
 		boolean correct = false;
 		Scanner sc = new Scanner(System.in);
 		int tempInt=0;

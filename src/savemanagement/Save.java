@@ -24,22 +24,18 @@ public class Save {
 	 * si sauvegarde vide, on redemande à l'utilisateur à resaisir le chemin.
 	 * @return object une File qui vraisemblablement n'est pas vide.
 	 */
-	public static File saveLoader() // Fonction ABSOLUMENT pas testé! -- Jack
+	public static File saveLoader(String path) // Fonction ABSOLUMENT pas testé! -- Jack
 	{
-		File object;
-		String fileLocation;
-		Boolean correct = false;
-		do { // On demande à l'utilisateur de taper le chemin vers sa sauvegarde
-			Scanner sc = new Scanner(System.in);
-			System.out.println("==>Veuillez entrer le chemin vers votre sauvegarde :");
-			fileLocation = sc.nextLine(); // L'utilisateur tape le chemin vers sa sauvegarde
-			object = new File(fileLocation);
-			if (object != null) // Si le fichier texte existe ou n'est pas vide...
-			{
-				correct=true; // ... on sort de la boucle
-			}
-		} while(correct==false);
+		//TODO: prévoir l'éventualité ou la sauvegarde est videe ou inexistante
+		File object = new File(path);
 		return object;
+	}
+	
+	public static ArrayList<String> convertFileToString(File save) // Fonction ABSOLUMENT pas testé! -- Jack
+	{
+		//TODO: coder une fonction qui converti chaque ligne du fichier en un ArrayList de String
+		ArrayList<String> test = new ArrayList<String>();
+		return test;
 	}
 
 }
