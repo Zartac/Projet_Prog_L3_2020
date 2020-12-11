@@ -13,8 +13,8 @@ Equipe:
 * Jack Thay
 
 A coder:
-* Charger les sauvegardes (un petit début)
-* Convertir le texte de la sauvegarde en donnée qu'on peut utiliser
+* Charger les sauvegardes (à compléter)
+* Convertir le texte de la sauvegarde en donnée qu'on peut utiliser (à compléter)
 * Convertir les algorithmes du profs
 * Créer un algorithme perso (pas urgent)
 * Créer les sauvegardes
