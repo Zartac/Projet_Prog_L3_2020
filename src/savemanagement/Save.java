@@ -14,6 +14,7 @@ import java.util.ArrayList;
  *
  */
 public class Save {
+	private static int nbTown; // nombre de villes
 	private static ArrayList<String> nameTown=new ArrayList<String>(); // liste des noms de villes
 	private static ArrayList<String> townRoad1=new ArrayList<String>();
 	private static ArrayList<String> townRoad2=new ArrayList<String>();
@@ -36,7 +37,7 @@ public class Save {
 
             String readLine = "";
 
-            System.out.println("Reading file using Buffered Reader");
+            System.out.println("*Lecture de la sauvegarde réussi*");
             String sub="";
             String sub2="";
 
@@ -57,47 +58,32 @@ public class Save {
             	}
                 //System.out.println(readLine);
             }
-            for(int i=0;i<nameTown.size();i++) {//A ENLEVER
-            	System.out.println(nameTown.get(i));
+            setNbTown(nameTown.size());
+            System.out.println("Nom des villes :"); //A ENLEVER
+            for(int i=0;i<nameTown.size();i++) {
+            	System.out.print(nameTown.get(i)+" ");
             }
+            System.out.println("");
+            System.out.println("Nom des villes à relier 1 :"); //A ENLEVER
+            for(int i=0;i<townRoad1.size();i++) {
+            	System.out.print(townRoad1.get(i)+" ");
+            }
+            System.out.println("");
+            System.out.println("Nom des villes à relier 2 :"); //A ENLEVER
+            for(int i=0;i<townRoad2.size();i++) {
+            	System.out.print(townRoad2.get(i)+" ");
+            }
+            System.out.println("");
+            System.out.println("Position des écoles :"); //A ENLEVER
+            for(int i=0;i<schoolLocation.size();i++) {
+            	System.out.print(schoolLocation.get(i)+" ");
+            }
+            System.out.println("");
 
         } catch (IOException e) {
-            System.out.println("Fchier non trouver");;
+			System.out.println("<!>Erreur lecture de la sauvegarde<!>");
+			System.out.println("<!>Vérifiez le chemin de votre sauvegarde entré en argument et relancez<!>");
         }
- }
-	
-	public File test1(String path) throws IOException {
-		File f = new File(path);
-		return f;
-	}
-	
-	public void lectureBuff(File f) throws IOException {
-		 BufferedReader b = new BufferedReader(new FileReader(f));
-
-         String readLine = "";
-
-         System.out.println("Reading file using Buffered Reader");
-         
-         String sub="";
-         String sub2="";
-
-         while ((readLine = b.readLine()) != null) {
-         	if(readLine.contains("ville")) {
-         		sub=readLine.substring(readLine.indexOf('('), readLine.indexOf(')'));
-         		nameTown.add(sub);
-         	}
-         	else if(readLine.contains("ecole")) {
-         		sub=readLine.substring(readLine.indexOf('('), readLine.indexOf(')'));
-         		schoolLocation.add(sub);
-         	}
-         	else if(readLine.contains("route")) {
-         		sub=readLine.substring(readLine.indexOf('('), readLine.indexOf(','));
-         		sub2=readLine.substring(readLine.indexOf(','), readLine.indexOf(')'));
-         		townRoad1.add(sub);
-        		townRoad2.add(sub2);
-         	}
-             //System.out.println(readLine);
-         }
 	}
 	
 	public static ArrayList<String> getNameTown() {
@@ -130,6 +116,14 @@ public class Save {
 
 	public static void setSchoolLocation(ArrayList<String> schoolLocation) {
 		Save.schoolLocation = schoolLocation;
+	}
+	
+	public static int getNbTown() {
+		return nbTown;
+	}
+
+	public static void setNbTown(int nbTown) {
+		Save.nbTown = nbTown;
 	}
 
 

@@ -48,7 +48,7 @@ public class ToString {
 		if (villeUnique == null)
 			return "null";
 		String b;
-		b = "*" + villeUnique.getSerial() + ". La ville " + villeUnique.getName() + " a été créée";
+		b = "*" + villeUnique.getSerial() + ". La ville " + villeUnique.getName() + " a été créée*";
 		return b.toString();
 	}
 	

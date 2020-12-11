@@ -1,5 +1,6 @@
 package menu;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -14,6 +15,42 @@ import agglomeration.Town;
  */
 public class Display 
 {
+	/**
+	 * Création d'un ArrayList de taille 26 qui contiendra les lettres de l'alphabet.
+	 * @return alphabet une ArrayList contenant les lettres de l'alphabet.
+	 */
+	public static ArrayList<String> createAlphabet()
+	{
+		ArrayList<String> alphabet = new ArrayList<String>();
+		alphabet.add("A");
+		alphabet.add("B");
+		alphabet.add("C");
+		alphabet.add("D");
+		alphabet.add("E");
+		alphabet.add("F");
+		alphabet.add("G");
+		alphabet.add("H");
+		alphabet.add("I");
+		alphabet.add("J");
+		alphabet.add("K");
+		alphabet.add("L");
+		alphabet.add("M");
+		alphabet.add("N");
+		alphabet.add("O");
+		alphabet.add("P");
+		alphabet.add("Q");
+		alphabet.add("R");
+		alphabet.add("S");
+		alphabet.add("T");
+		alphabet.add("U");
+		alphabet.add("V");
+		alphabet.add("W");
+		alphabet.add("X");
+		alphabet.add("Y");
+		alphabet.add("Z");
+		return alphabet;
+	}
+	
 	/**
 	 * Affichage de la problématique menant à ce projet.
 	 */
@@ -151,25 +188,7 @@ public class Display
 				{
 					String commandPrompt2_2 = "====>Veuillez entrer le numéro de la ville qui va relier " +villeTab[town1-1].getSerial() + ". " + villeTab[town1-1].getName() + ".";
 					int town2 = protectedIntInput(commandPrompt2_2); // = choix 2
-					if (town1==town2) // On vérifie que l'utilisateur n'essaye pas de créer une route d'une ville a elle même
-					{
-						System.out.println("<!>Nous ne pouvons créer une route d'une ville vers elle même<!>");
-					}
-					else if(Town.checkLinkExist(villeTab[town1-1], town2)) // On vérifie que choix 1 est pas déjà relié choix 2
-					{
-						System.out.println(ToString.toStringLinkExist(villeTab[town1-1], villeTab[town2-1]));
-					}
-					else if(Town.checkTownExist(villeTab,town2)==true) // On vérifie que les 2 villes éxiste
-					{
-						villeTab[town1-1].addToLink(villeTab[town1-1].getLink(), town2); // On ajoute le choix 2 de l'utilisateur dans la liste d'adjacence du choix 1
-						System.out.println(ToString.toStringLinkCreated(villeTab[town1-1])); // On affiche la liste d'adjacence du choix 1
-						villeTab[town2-1].addToLink(villeTab[town2-1].getLink(), town1); // On ajoute le choix 1 de l'utilisateur dans la liste d'adjacence du choix 2
-						System.out.println(ToString.toStringLinkCreated(villeTab[town2-1])); // On affiche la liste d'adjacence du choix 2
-					}
-					else // on suppose que le 2ème choix l'utilisateur n'existe pas
-					{
-						System.out.println("<!>La ville "+ town2 +" n'existe pas<!>");
-					}
+					Town.securedLinkCreation(villeTab, town1, town2);
 				}
 				else // on suppose que le 1er choix l'utilisateur n'existe pas
 				{
@@ -210,42 +229,13 @@ public class Display
 			{
 				String commandPrompt3_1 = "===>Veuillez entrer le numéro de la ville qui va avoir une nouvelle école :";
 				int town = protectedIntInput(commandPrompt3_1);
-				if (Town.checkTownExist(villeTab,town)==true) // On vérifie que la ville existe
-				{
-					if(villeTab[town-1].isSchool()==true) System.out.println("<!>Cette ville possède déjà une école<!>"); // on vérifie que la ville n'a pas déjà une école
-					else if (villeTab[town-1].isSchool()==false) { // si cette ville n'a pas d'école
-						villeTab[town-1].setSchool(true);
-						System.out.println(ToString.toStringSchoolAdded(villeTab[town-1]));
-					}
-					System.out.println(ToString.toStringSchoolList(villeTab));
-				}
-				else // on suppose que le choix l'utilisateur n'existe pas
-				{
-					System.out.println("<!>La ville "+ town +" n'existe pas<!>");
-				}
+				Town.securedAddSchool(villeTab, town);
 			}
 			else if (choice3 == 2) // l'utilisateur choisi de retirer une école
 			{
 				String commandPrompt3_2 = "===>Veuillez entrer le numéro de la ville qui va perdre son école :";
 				int town = protectedIntInput(commandPrompt3_2);
-				if (Town.checkTownExist(villeTab,town)==true) // On vérifie que la ville existe
-				{
-					if(villeTab[town-1].isSchool()==true) // On vérifie qu'il y'a une école à retirer.
-					{
-						if(Town.checkLinkSchool(villeTab, town)==true) // On vérifie la liste d'adjacence de la ville
-						{
-							villeTab[town-1].setSchool(false);
-							System.out.println(ToString.toStringSchoolRemoved(villeTab[town-1]));
-						}
-						else System.out.println(ToString.toStringNoSchool(villeTab[town-1]));
-					}
-					else if (villeTab[town-1].isSchool()==false) System.out.println("<!>Cette ville n'a pas d'école<!>");
-					System.out.println(ToString.toStringSchoolList(villeTab));
-				}
-				else // on suppose que le choix l'utilisateur n'existe pas
-				{
-					System.out.println("<!>La ville "+ town +" n'existe pas<!>");
-				}
+				Town.securedRemoveSchool(villeTab, town);
 			}
 			else if (choice3 == 3) // l'utilisateur met fin au programme
 			{

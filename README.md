@@ -13,8 +13,8 @@ Equipe:
 * Jack Thay
 
 A coder:
-* Charger les sauvegardes (à compléter)
-* Convertir le texte de la sauvegarde en donnée qu'on peut utiliser (à compléter)
+* Améliorer le chargement de sauvegarde (à compléter)
+* Créer des sécurités pour empêcher la création de ville doublon.
 * Convertir les algorithmes du profs
 * Créer un algorithme perso (pas urgent)
 * Créer les sauvegardes

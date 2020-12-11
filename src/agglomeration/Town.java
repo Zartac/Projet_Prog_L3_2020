@@ -95,11 +95,11 @@ public class Town
 	 * @param name liste de noms qui sera utilisé pour nommer les villes.
 	 * @return tab tableau de "Town", ensemble de ville qui aura pour nombre "choice".
 	 */
-	public static Town[] createTownLoop(int choice, String[] name) {
+	public static Town[] createTownLoop(int choice, ArrayList<String> name) {
 		Town[] tab = new Town[choice]; 
 		for (int i = 0; i < tab.length; ++i) 
 		{
-			tab[i] = new Town(name[i]); // On crée autant de ville que l'utilsateur a choisi
+			tab[i] = new Town(name.get(i)); // On crée autant de ville que l'utilsateur a choisi
 			System.out.println(ToString.toStringTownCreated(tab[i]));
 		}
 		return tab;
@@ -151,6 +151,88 @@ public class Town
 				return true;
 		}
 		return false;
+	}
+	
+	/**
+	 * Créer une route entre 2 villes tout en vérifiant les contraintes.
+	 * @param villeTab le tableau de ville à analyser.
+	 * @param town1 le numéro de série de la 1ère ville à relier.
+	 * @param town1 le numéro de série de la 2ème ville à relier.
+	 */
+	public static void securedLinkCreation(Town[] villeTab, int town1, int town2) 
+	{
+		if (town1==town2) // On vérifie que l'utilisateur n'essaye pas de créer une route d'une ville a elle même
+		{
+			System.out.println("<!>Nous ne pouvons créer une route d'une ville vers elle même<!>");
+		}
+		else if(Town.checkLinkExist(villeTab[town1-1], town2)) // On vérifie que choix 1 est pas déjà relié choix 2
+		{
+			System.out.println(ToString.toStringLinkExist(villeTab[town1-1], villeTab[town2-1]));
+		}
+		else if(Town.checkTownExist(villeTab,town2)==true) // On vérifie que les 2 villes éxiste
+		{
+			villeTab[town1-1].addToLink(villeTab[town1-1].getLink(), town2); // On ajoute le choix 2 de l'utilisateur dans la liste d'adjacence du choix 1
+			System.out.println(ToString.toStringLinkCreated(villeTab[town1-1])); // On affiche la liste d'adjacence du choix 1
+			villeTab[town2-1].addToLink(villeTab[town2-1].getLink(), town1); // On ajoute le choix 1 de l'utilisateur dans la liste d'adjacence du choix 2
+			System.out.println(ToString.toStringLinkCreated(villeTab[town2-1])); // On affiche la liste d'adjacence du choix 2
+		}
+		else // on suppose que le 2ème choix l'utilisateur n'existe pas
+		{
+			System.out.println("<!>La ville "+ town2 +" n'existe pas<!>");
+		}
+	}
+	
+	/**
+	 * Ajoute une école dans une ville tout en vérifiant les contraintes.
+	 * @param villeTab le tableau de ville à analyser.
+	 * @param town le numéro de série de la ville qui va une école ajouté.
+	 */
+	public static void securedAddSchool(Town[] villeTab, int town) 
+	{
+		if (Town.checkTownExist(villeTab,town)==true) // On vérifie que la ville existe
+		{
+			if(villeTab[town-1].isSchool()==true)
+				{
+				System.out.println("<!>Cette ville possède déjà une école<!>"); // on vérifie que la ville n'a pas déjà une école
+				}
+			else if (villeTab[town-1].isSchool()==false) // si cette ville n'a pas d'école
+			{ 
+				villeTab[town-1].setSchool(true);
+				System.out.println(ToString.toStringSchoolAdded(villeTab[town-1]));
+			}
+			System.out.println(ToString.toStringSchoolList(villeTab));
+		}
+		else // on suppose que le choix l'utilisateur n'existe pas
+		{
+			System.out.println("<!>La ville "+ town +" n'existe pas<!>");
+		}
+	}
+	
+	/**
+	 * Retire une école dans une ville tout en vérifiant les contraintes.
+	 * @param villeTab le tableau de ville à analyser.
+	 * @param town le numéro de série de la ville qui va une école retiré.
+	 */
+	public static void securedRemoveSchool(Town[] villeTab, int town) 
+	{
+		if (Town.checkTownExist(villeTab,town)==true) // On vérifie que la ville existe
+		{
+			if(villeTab[town-1].isSchool()==true) // On vérifie qu'il y'a une école à retirer.
+			{
+				if(Town.checkLinkSchool(villeTab, town)==true) // On vérifie la liste d'adjacence de la ville
+				{
+					villeTab[town-1].setSchool(false);
+					System.out.println(ToString.toStringSchoolRemoved(villeTab[town-1]));
+				}
+				else System.out.println(ToString.toStringNoSchool(villeTab[town-1]));
+			}
+			else if (villeTab[town-1].isSchool()==false) System.out.println("<!>Cette ville n'a pas d'école<!>");
+			System.out.println(ToString.toStringSchoolList(villeTab));
+		}
+		else // on suppose que le choix l'utilisateur n'existe pas
+		{
+			System.out.println("<!>La ville "+ town +" n'existe pas<!>");
+		}
 	}
 	
 }

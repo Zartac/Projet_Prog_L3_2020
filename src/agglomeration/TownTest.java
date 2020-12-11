@@ -2,8 +2,11 @@ package agglomeration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
+import menu.Display;
 import menu.ToString;
 
 /**
@@ -18,16 +21,15 @@ class TownTest {
 	@Test
 	void test() 
 	{
-		String[] alphabet = {"A","B","C","D","E","F","G","H","I","J","K"
-				,"L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z" };
+		ArrayList<String>alphabet = Display.createAlphabet(); //Création d'un alphabet
 		Town[] villeTab = new Town[10]; 
 		for (int i = 0; i < villeTab.length; ++i) 
 		{
-			villeTab[i] = new Town(alphabet[i]); // On crée 10 ville
+			villeTab[i] = new Town(alphabet.get(i)); // On crée 10 ville
 			assertEquals(false, villeTab[i].isSchool()); // On vérifie que chaque ville n'a pas d'école
 			assertEquals("A", villeTab[0].getName()); // On vérifie que la 1ere ville est nommé 'A'
 			assertEquals(1, villeTab[0].getSerial()); // On vérifie que la 1ere ville a un serial "1"
-			assertEquals(alphabet[i], villeTab[i].getName()); // On vérifie que chaque ville a un nom qui correspond à l'alphabet
+			assertEquals(alphabet.get(i), villeTab[i].getName()); // On vérifie que chaque ville a un nom qui correspond à l'alphabet
 			for (int j = 0; j < i; ++j)
 				assertNotEquals(villeTab[i].getSerial(), villeTab[j].getSerial()); // On vérifie que chaque ville a un serial différent
 		}
