@@ -42,16 +42,16 @@ public class Save {
 
             while ((readLine = b.readLine()) != null) {
             	if(readLine.contains("ville")) {
-            		sub=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(')'));
+            		sub=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(')'));//+1 pour ne pas inclure la parenthese
             		nameTown.add(sub);
             	}
             	else if(readLine.contains("ecole")) {
-            		sub=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(')'));
+            		sub=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(')'));//+1 pour ne pas inclure la parenthese
             		schoolLocation.add(sub);
             	}
             	else if(readLine.contains("route")) {
-            		sub=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(','));
-            		sub2=readLine.substring(readLine.indexOf(',')+1, readLine.indexOf(')'));
+            		sub=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(','));//+1 pour ne pas inclure la parenthese
+            		sub2=readLine.substring(readLine.indexOf(',')+1, readLine.indexOf(')'));//+1 pour ne pas inclure la virgule
             		townRoad1.add(sub);
             		townRoad2.add(sub2);
             	}
