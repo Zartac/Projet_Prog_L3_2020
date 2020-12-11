@@ -37,7 +37,6 @@ public class Save {
             String readLine = "";
 
             System.out.println("Reading file using Buffered Reader");
-            
             String sub="";
             String sub2="";
 
@@ -63,7 +62,7 @@ public class Save {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Fchier non trouver");;
         }
  }
 	
