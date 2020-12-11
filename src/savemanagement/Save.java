@@ -58,7 +58,7 @@ public class Save {
             	}
                 //System.out.println(readLine);
             }
-            for(int i=0;i<nameTown.size();i++) {
+            for(int i=0;i<nameTown.size();i++) {//A ENLEVER
             	System.out.println(nameTown.get(i));
             }
 
