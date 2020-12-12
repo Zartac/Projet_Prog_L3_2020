@@ -15,7 +15,6 @@ Equipe:
 A coder:
 * Améliorer le chargement de sauvegarde (à compléter)
 * Créer des sécurités pour empêcher la création de ville doublon.
-* Convertir les algorithmes du profs
 * Créer un algorithme perso (pas urgent)
 * Créer les sauvegardes
 * sc.close() à caser
