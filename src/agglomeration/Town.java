@@ -235,4 +235,19 @@ public class Town
 		}
 	}
 	
+	/**
+	 * Vérifie, que l'agglomération est conforme aux contraintes du sujet.
+	 * @param villeTab le tableau de ville à analyser.
+	 * @return true/false si en effet l'agglomération est conforme aux contraintes.
+	 */
+	public static boolean checkAgglomeration(Town[] villeTab)
+	{
+		for (int i = 0; i < villeTab.length; ++i) // boucle qui permet de parcourir le tableau de ville
+		{
+			if (villeTab[i].isSchool()==false && checkLinkSchool(villeTab, villeTab[i].getSerial())==false)
+				return false;
+		}
+		return true;
+	}
+	
 }
