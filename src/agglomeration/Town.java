@@ -106,6 +106,22 @@ public class Town
 	}
 	
 	/**
+	 * Vérifie, pour une ville donné, que le retrait de son école respecte les contraintes d'accessibilité.
+	 * @param villeTab le tableau de ville a analyser.
+	 * @param choice le numéro de série de la ville dont on vérifie que son retrait d'école respecte les contraintes d'accessibilité.
+	 * @return check vérifie dans la liste d'adjacence si la ville n°"choice" possède une ville voisine avec une école.
+	 */
+	public static boolean removableSchool(Town[] villeTab, int choice) {
+		ArrayList<Integer> tempList=villeTab[choice-1].getLink(); // -1 à choice car le tableau commence depuis 0 et les serials depuis 1
+		boolean check=false;
+		for(int i=0; i<tempList.size();i++) {
+			int tempNumber = tempList.get(i); // On met en mémoire la valeur de la liste d'adjacence en position "i".
+			if(villeTab[tempNumber-1].isSchool()==true) check=true; // -1 à tempNumber car le tableau commence depuis 0 et les serials depuis 1
+		}
+		return check;
+	}
+	
+	/**
 	 * Vérifie, pour une ville donné, sa liste d'adjacence et si une ville voisine a une école.
 	 * @param villeTab le tableau de ville a analyser.
 	 * @param choice le numéro de série de la ville dont on vérifie la liste d'adjacence pour voir si un voisin a une école.
@@ -219,7 +235,7 @@ public class Town
 		{
 			if(villeTab[town-1].isSchool()==true) // On vérifie qu'il y'a une école à retirer.
 			{
-				if(Town.checkLinkSchool(villeTab, town)==true) // On vérifie la liste d'adjacence de la ville
+				if(Town.removableSchool(villeTab, town)==true) // On vérifie la liste d'adjacence de la ville
 				{
 					villeTab[town-1].setSchool(false);
 					System.out.println(ToString.toStringSchoolRemoved(villeTab[town-1]));
@@ -240,7 +256,7 @@ public class Town
 	 * @param villeTab le tableau de ville à analyser.
 	 * @return true/false si en effet l'agglomération est conforme aux contraintes.
 	 */
-	public static boolean checkAgglomeration(Town[] villeTab)
+	public static boolean checkConstraintAccess(Town[] villeTab)
 	{
 		for (int i = 0; i < villeTab.length; ++i) // boucle qui permet de parcourir le tableau de ville
 		{

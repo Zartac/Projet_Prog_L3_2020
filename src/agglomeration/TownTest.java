@@ -38,7 +38,7 @@ class TownTest {
 		villeTab[0].addToLink(villeTab[0].getLink(),5); // On rajoute la ville 5 comme lien à la ville 1
 		villeTab[0].addToLink(villeTab[0].getLink(),6); // On rajoute la ville 6 comme lien à la ville 1
 		assertEquals(ToString.toStringLink(villeTab[0].getLink()), "4, 5, 6."); // On vérifie que la ville 1 a comme lien 4, 5 et 6.
-		assertEquals(false, Town.checkLinkSchool(villeTab, 1)); // On vérifie que la ville 1 n'est pas relié a une ville avec une école.
+		assertEquals(false, Town.removableSchool(villeTab, 1)); // On vérifie que la ville 1 n'est pas relié a une ville avec une école.
 	}
 
 }
