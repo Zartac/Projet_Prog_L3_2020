@@ -40,17 +40,19 @@ public class Save {
             System.out.println("*Lecture de la sauvegarde réussi*");
             String sub="";
             String sub2="";
+            String test;
 
             while ((readLine = b.readLine()) != null) {
-            	if(readLine.contains("ville")) {
+            	test=readLine.substring(0, 5); //coup de chance tous les mots font 5 lettres (5 exclu)
+            	if(test.toLowerCase().equals("ville")) {
             		sub=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(')'));//+1 pour ne pas inclure la parenthese
             		nameTown.add(sub);
             	}
-            	else if(readLine.contains("ecole")) {
+            	else if(test.toLowerCase().equals("ecole")) {
             		sub=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(')'));//+1 pour ne pas inclure la parenthese
             		schoolLocation.add(sub);
             	}
-            	else if(readLine.contains("route")) {
+            	else if(test.toLowerCase().equals("route")) {
             		sub=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(','));//+1 pour ne pas inclure la parenthese
             		sub2=readLine.substring(readLine.indexOf(',')+1, readLine.indexOf(')'));//+1 pour ne pas inclure la virgule
             		townRoad1.add(sub);

@@ -28,6 +28,7 @@ public class Main {
 		}
 		else if (args.length != 0) // Argument détecté, on lance le 2ème rendu du projet.
 		{
+			//if(args[0].contains("nyancat")) nyan();
 			Display.displayLaunch();
 			System.out.println("==>Lecture du fichier de sauvegarde :");
 			try {
