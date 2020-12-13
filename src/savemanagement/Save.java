@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Classe pour la lecture et l'écriture de sauvegarde.
@@ -44,12 +45,13 @@ public class Save {
             String test;
 
             while ((readLine = b.readLine()) != null) {
-            	sub=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(')'));
             	test=readLine.substring(0, 5); //coup de chance tous les mots font 5 lettres (5 exclu)
-            	if(test.toLowerCase().equals("ville") || !nameTown.contains(sub)) {
+            	if(test.toLowerCase().equals("ville")) {
+                	sub=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(')'));
             		nameTown.add(sub);
             	}
             	else if(test.toLowerCase().equals("ecole")) {
+                	sub=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(')'));
             		schoolLocation.add(sub);
             	}
             	else if(test.toLowerCase().equals("route")) {
@@ -60,10 +62,11 @@ public class Save {
             	}
                 //System.out.println(readLine);
             }
-            setNbTown(nameTown.size());
+            ArrayList<String> nameTownSingle=new ArrayList<>(new HashSet<>(nameTown));
+            setNbTown(nameTownSingle.size());
             System.out.println("Nom des villes :"); //A ENLEVER
-            for(int i=0;i<nameTown.size();i++) {
-            	System.out.print(nameTown.get(i)+" ");
+            for(int i=0;i<nameTownSingle.size();i++) {
+            	System.out.print(nameTownSingle.get(i)+" ");
             }
             System.out.println("");
             System.out.println("Nom des villes à relier 1 :"); //A ENLEVER
