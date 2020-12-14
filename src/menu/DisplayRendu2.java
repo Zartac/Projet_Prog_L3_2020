@@ -62,7 +62,7 @@ public class DisplayRendu2 {
 			{
 				System.out.println("<!>Code pas encore fini<!>");
 			}
-			else if (choice4 == 4) // l'utilisateur est au courant de notre Easter Egg ;)
+			else if (choice4 == 4)
 			{
 				break;
 			}
@@ -97,7 +97,7 @@ public class DisplayRendu2 {
 			{
 				System.out.println("<!>Code pas encore fini<!>");
 			}
-			else if (choice5 == 4) // l'utilisateur est au courant de notre Easter Egg ;)
+			else if (choice5 == 4)
 			{
 				break;
 			}
