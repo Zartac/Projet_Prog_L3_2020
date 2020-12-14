@@ -21,6 +21,19 @@ public class DisplayRendu2 {
 		System.out.println("|=============================================================|");
 	}
 	
+	public static void displayInterface2()
+	{
+		System.out.println("");
+		System.out.println("|=============================================================|");
+		System.out.println("|=================== Résolution automatique ==================|");
+		System.out.println("|=============================================================|");
+		System.out.println("|1) Utiliser l'algorithme 1 (naïf).                           |");
+		System.out.println("|2) Utiliser l'algorithme 1 (moins naïf).                     |");
+		System.out.println("|3) Demander à Thanos.                                        |");
+		System.out.println("|4) Fin.                                                      |");
+		System.out.println("|=============================================================|");
+	}
+	
 	public static void nyan() 
 	{
 		System.out.println("trouvé Nyan Cat");
@@ -43,8 +56,7 @@ public class DisplayRendu2 {
 			}
 			else if (choice4 == 2) // l'utilisateur choisi résoudre automatiquement
 			{
-				Algorithm.algorithm1(villeTab, villeTab.length);
-				System.out.println("Score de l'agglomération : " + Algorithm.getScore(villeTab));
+				displayAutoMenu(villeTab);
 			}
 			else if (choice4 == 3) // l'utilisateur choisi de sauvegarder
 			{
@@ -59,6 +71,41 @@ public class DisplayRendu2 {
 				System.out.println("<!>Vous n'avez pas entré un choix valide<!>");
 			}
 		} while (choice4 != 4);
+	}
+	
+	/**
+	 * Affichage des invites de commandes utilisateurs pour le menu principale .
+	 * @param villeTab tableau de ville précedemment créé
+	 */
+	public static void displayAutoMenu(Town[] villeTab) {
+		int choice5;
+		String commandPrompt3 = "==>Veuillez entrer votre choix :";
+		do {
+			displayInterface2();
+			choice5 = Display.protectedIntInput(commandPrompt3);
+			if (choice5 == 1) // l'utilisateur choisi résoudre manuellement
+			{
+				Algorithm.algorithm1(villeTab, villeTab.length);
+				System.out.println("Score de l'agglomération : " + Algorithm.getScore(villeTab));
+			}
+			else if (choice5 == 2) // l'utilisateur choisi résoudre automatiquement
+			{
+				Algorithm.algorithm2(villeTab, villeTab.length);
+				System.out.println("Score de l'agglomération : " + Algorithm.getScore(villeTab));
+			}
+			else if (choice5 == 3) // l'utilisateur choisi de sauvegarder
+			{
+				System.out.println("<!>Code pas encore fini<!>");
+			}
+			else if (choice5 == 4) // l'utilisateur est au courant de notre Easter Egg ;)
+			{
+				break;
+			}
+			else // l'utilisateur tape un choix qui n'existe pas
+			{
+				System.out.println("<!>Vous n'avez pas entré un choix valide<!>");
+			}
+		} while (choice5 != 4);
 	}
 
 }
