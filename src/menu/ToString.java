@@ -118,7 +118,7 @@ public class ToString {
 		if (villeUnique == null)
 			return "null";
 		String b;
-		b = "<!>La ville "+villeUnique.getSerial() + ". " + villeUnique.getName() + " est isolé ou n'est pas relié à une autre ville avec une école<!>";
+		b = "<!>La ville "+villeUnique.getSerial() + ". " + villeUnique.getName() + " est isolé, n'est pas relié à une autre ville avec une école, ou alors son retrait empêcherait un de ses voisins d'avoir accès à une école<!>";
 		return b.toString();
 	}
 	

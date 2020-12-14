@@ -39,55 +39,75 @@ public class Save {
             String readLine = "";
 
             System.out.println("*Lecture de la sauvegarde réussi*");
-            String sub="";
-            String sub1="";
-            String sub2="";
-            String test;
+            String listTownAndlistSchool=""; // pour la lecture des noms de villes et positions d'écoles.
+            String listLink1=""; // liste des noms de villes à relier à listLink 2.
+            String listLink2=""; // liste des noms de villes à relier à listLink 1.
+            String firstLetters; // pour ne récupérer que les 1ère lettres de la ligne.
 
             while ((readLine = b.readLine()) != null) {
-            	test=readLine.substring(0, 5); //coup de chance tous les mots font 5 lettres (5 exclu)
-            	if(test.toLowerCase().equals("ville")) {
-                	sub=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(')'));
-            		nameTown.add(sub);
+            	firstLetters=readLine.substring(0, 5); //coup de chance tous les mots font 5 lettres (5 exclu)
+            	if(firstLetters.toLowerCase().equals("ville")) {
+                	listTownAndlistSchool=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(')'));
+            		nameTown.add(listTownAndlistSchool);
             	}
-            	else if(test.toLowerCase().equals("ecole")) {
-                	sub=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(')'));
-            		schoolLocation.add(sub);
+            	else if(firstLetters.toLowerCase().equals("ecole")) {
+                	listTownAndlistSchool=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(')'));
+            		schoolLocation.add(listTownAndlistSchool);
             	}
-            	else if(test.toLowerCase().equals("route")) {
-            		sub1=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(','));//+1 pour ne pas inclure la parenthese
-            		sub2=readLine.substring(readLine.indexOf(',')+1, readLine.indexOf(')'));//+1 pour ne pas inclure la virgule
-            		townRoad1.add(sub1);
-            		townRoad2.add(sub2);
+            	else if(firstLetters.toLowerCase().equals("route")) {
+            		listLink1=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(','));//+1 pour ne pas inclure la parenthese
+            		listLink2=readLine.substring(readLine.indexOf(',')+1, readLine.indexOf(')'));//+1 pour ne pas inclure la virgule
+            		townRoad1.add(listLink1);
+            		townRoad2.add(listLink2);
             	}
                 //System.out.println(readLine);
             }
-            ArrayList<String> nameTownSingle=new ArrayList<>(new HashSet<>(nameTown));
+            saveRecap();
+            ArrayList<String> nameTownSingle=new ArrayList<>(new HashSet<>(nameTown)); // retrait des doublons
             setNbTown(nameTownSingle.size());
-            System.out.println("Nom des villes :"); //A ENLEVER
-            for(int i=0;i<nameTownSingle.size();i++) {
-            	System.out.print(nameTownSingle.get(i)+" ");
-            }
-            System.out.println("");
-            System.out.println("Nom des villes à relier 1 :"); //A ENLEVER
-            for(int i=0;i<townRoad1.size();i++) {
-            	System.out.print(townRoad1.get(i)+" ");
-            }
-            System.out.println("");
-            System.out.println("Nom des villes à relier 2 :"); //A ENLEVER
-            for(int i=0;i<townRoad2.size();i++) {
-            	System.out.print(townRoad2.get(i)+" ");
-            }
-            System.out.println("");
-            System.out.println("Position des écoles :"); //A ENLEVER
-            for(int i=0;i<schoolLocation.size();i++) {
-            	System.out.print(schoolLocation.get(i)+" ");
+            if (nameTown.size()!=nameTownSingle.size())
+            {
+            	System.out.println("<!>Villes doublons détecté<!>");
+            	System.out.println("*Retrait des villes doublons*");
+            	nameTown = nameTownSingle;
+                System.out.println("Nom des villes sans les doublons :");
+                for(int i=0;i<nameTown.size();i++) {
+                	System.out.print(nameTown.get(i)+" ");
+                }
             }
             System.out.println("");
 
         } catch (IOException e) {
 			System.out.println("<!>Erreur lecture de la sauvegarde<!>");
 			System.out.println("<!>Vérifiez le chemin de votre sauvegarde entré en argument et relancez<!>");
+        }
+	}
+	
+	public static void saveRecap()
+	{
+		System.out.println("*Information lus dans la sauvegarde :*");
+		System.out.println(">Nom des villes :");
+		System.out.print(">>");
+        for(int i=0;i<nameTown.size();i++) {
+        	System.out.print(nameTown.get(i)+" ");
+        }
+        System.out.println("");
+        System.out.println(">Nom des villes à relier 1 :");
+        System.out.print(">>");
+        for(int i=0;i<townRoad1.size();i++) {
+        	System.out.print(townRoad1.get(i)+" ");
+        }
+        System.out.println("");
+        System.out.println(">Nom des villes à relier 2 :");
+        System.out.print(">>");
+        for(int i=0;i<townRoad2.size();i++) {
+        	System.out.print(townRoad2.get(i)+" ");
+        }
+        System.out.println("");
+        System.out.println(">Position des écoles :");
+        System.out.print(">>");
+        for(int i=0;i<schoolLocation.size();i++) {
+        	System.out.print(schoolLocation.get(i)+" ");
         }
 	}
 	

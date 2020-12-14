@@ -112,13 +112,14 @@ public class Town
 	 * @return check vérifie dans la liste d'adjacence si la ville n°"choice" possède une ville voisine avec une école.
 	 */
 	public static boolean removableSchool(Town[] villeTab, int choice) {
-		ArrayList<Integer> tempList=villeTab[choice-1].getLink(); // -1 à choice car le tableau commence depuis 0 et les serials depuis 1
-		boolean check=false;
-		for(int i=0; i<tempList.size();i++) {
-			int tempNumber = tempList.get(i); // On met en mémoire la valeur de la liste d'adjacence en position "i".
-			if(villeTab[tempNumber-1].isSchool()==true) check=true; // -1 à tempNumber car le tableau commence depuis 0 et les serials depuis 1
+		villeTab[choice-1].setSchool(false); // on retire l'école dans la ville en question sans regarder les contraintes
+		if (checkConstraintAccess(villeTab)==false) // on vérifie que l'agglomération respecte les contraintes
+		{
+			villeTab[choice-1].setSchool(true); // on remet l'école là où elle était
+			return false; // on lui indique que c'est pas possible d'enlever l'école puisque ça fausse le respect des contraintes
 		}
-		return check;
+		villeTab[choice-1].setSchool(true); // on remet l'école même si les conditions sont toujours respectés
+		return true; // on lui indique que c'est possible
 	}
 	
 	/**
