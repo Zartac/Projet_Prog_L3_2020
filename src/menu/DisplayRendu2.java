@@ -28,7 +28,7 @@ public class DisplayRendu2 {
 		System.out.println("|=================== Résolution automatique ==================|");
 		System.out.println("|=============================================================|");
 		System.out.println("|1) Utiliser l'algorithme 1 (naïf).                           |");
-		System.out.println("|2) Utiliser l'algorithme 1 (moins naïf).                     |");
+		System.out.println("|2) Utiliser l'algorithme 2 (moins naïf).                     |");
 		System.out.println("|3) Demander à Thanos.                                        |");
 		System.out.println("|4) Fin.                                                      |");
 		System.out.println("|=============================================================|");

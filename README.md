@@ -18,3 +18,7 @@ A coder:
 * Créer les sauvegardes
 * sc.close() à caser
 * Créer des test pour ToString?
+* Créer les Easter Eggs
+* Finir les algo automatique
+* JAVADOC!!!!!!!!!!!
+* ORTHOGRAPHE!!
