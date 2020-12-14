@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import agglomeration.Town;
+
 /**
  * Classe pour la lecture et l'écriture de sauvegarde.
  * 
@@ -29,7 +31,6 @@ public class Save {
 	 */
 	public static void saveLoader(String path) throws IOException// Fonction ABSOLUMENT pas testé! -- Jack
 	{
-		//TODO: prévoir l'éventualité ou la sauvegarde est videe ou inexistante
 		try {
 
             File f = new File(path);
@@ -62,7 +63,7 @@ public class Save {
             	}
                 //System.out.println(readLine);
             }
-            saveRecap();
+            //saveRecap();
             ArrayList<String> nameTownSingle=new ArrayList<>(new HashSet<>(nameTown)); // retrait des doublons
             setNbTown(nameTownSingle.size());
             if (nameTown.size()!=nameTownSingle.size())
@@ -86,7 +87,7 @@ public class Save {
 	public static void saveRecap()
 	{
 		System.out.println("*Information lus dans la sauvegarde :*");
-		System.out.println(">Nom des villes :");
+		System.out.println(">Nom des villes lu :");
 		System.out.print(">>");
         for(int i=0;i<nameTown.size();i++) {
         	System.out.print(nameTown.get(i)+" ");
@@ -109,6 +110,34 @@ public class Save {
         for(int i=0;i<schoolLocation.size();i++) {
         	System.out.print(schoolLocation.get(i)+" ");
         }
+        System.out.println("");
+	}
+	
+	public static Town[] convertSaveToAgglo()
+	{
+		Town[] villeTab = Town.createTownLoop(Save.getNbTown(), Save.getNameTown());
+		for (int i = 0; i < townRoad1.size(); ++i)
+		{
+			Town.securedLinkCreation(villeTab, convertTownNameToSerial(villeTab, townRoad1.get(i)), convertTownNameToSerial(villeTab, townRoad2.get(i)));
+		}
+		for (int i = 0; i < schoolLocation.size(); ++i)
+		{
+			Town.securedAddSchool(villeTab,convertTownNameToSerial(villeTab, schoolLocation.get(i)));
+		}
+		return villeTab;
+	}
+	
+	public static int convertTownNameToSerial(Town[] villeTab, String name)
+	{
+		int serial = 0; // La ville avec un numéro de série 0 n'existe pas
+		for (int i = 0; i < villeTab.length; ++i) 
+		{
+			if (name.equals(villeTab[i].getName()))
+			{
+				serial = villeTab[i].getSerial();
+			}
+		}
+		return serial;
 	}
 	
 	public static ArrayList<String> getNameTown() {

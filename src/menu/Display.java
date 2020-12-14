@@ -239,7 +239,6 @@ public class Display
 			}
 			else if (choice3 == 3) // l'utilisateur met fin au programme
 			{
-				displayEnd();
 				break;
 			}
 			else if (choice3 == 2020) // l'utilisateur est au courant de notre Easter Egg ;)
