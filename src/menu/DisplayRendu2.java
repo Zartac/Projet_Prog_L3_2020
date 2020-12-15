@@ -100,6 +100,7 @@ public class DisplayRendu2 {
     	{
     		System.out.println(ToString.toStringSchoolAdded(villeTab[tempSchool.get(i)-1]));    		
     	}
+    	System.out.println(ToString.toStringSchoolList(villeTab));
     	try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
