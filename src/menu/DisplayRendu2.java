@@ -1,5 +1,7 @@
 package menu;
 
+import java.util.ArrayList;
+
 import agglomeration.Town;
 import algorithm.Algorithm;
 
@@ -21,6 +23,9 @@ public class DisplayRendu2 {
 		System.out.println("|=============================================================|");
 	}
 	
+	/**
+	 * Affichage des choix lors de la résolution automatique de l'accessibilité des écoles.
+	 */
 	public static void displayInterface2()
 	{
 		System.out.println("");
@@ -32,6 +37,58 @@ public class DisplayRendu2 {
 		System.out.println("|3) Demander à Thanos.                                        |");
 		System.out.println("|4) Fin.                                                      |");
 		System.out.println("|=============================================================|");
+	}
+	
+	/**
+	 * Affichage du Easter Egg, tradition du DUT AS de l'IUT Descartes!
+	 */
+	public static void displayThanos(Town[] villeTab)
+	{
+		String thanos1[] = {
+				"- You couldn't live with your own failure.",
+				"- Where did that bring you?",
+                "- Back to me.",
+                "- I will first snap every school out of existence."
+            };
+        for (int i = 0; i < thanos1.length; ++i) {
+        	try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
+				e.printStackTrace();
+			}
+            System.out.println(thanos1[i]);
+        }
+        System.out.println("");
+        System.out.println("<!>Toutes les écoles se sont volatilisés<!>");
+        ArrayList<Integer> tempSchool = new ArrayList<Integer>();
+        for (int i = 0; i < villeTab.length; ++i)
+        {
+        	if (villeTab[i].isSchool()==true)
+        	{
+        		tempSchool.add(villeTab[i].getSerial());
+        	}
+        }
+        System.out.println("");
+		String thanos2[] = {
+				"- I will now build schools.",
+				"- Where they're needed.",
+            };
+        for (int i = 0; i < thanos2.length; ++i) {
+        	try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
+				e.printStackTrace();
+			}
+            System.out.println(thanos2[i]);
+        }
+        System.out.println("");
+        for (int i = 0; i < tempSchool.size(); ++i)
+        {
+        	System.out.println(ToString.toStringSchoolAdded(villeTab[tempSchool.get(i)-1]));
+        }
+    	
 	}
 	
 	public static void nyan() 
@@ -87,21 +144,34 @@ public class DisplayRendu2 {
 			displayInterface2();
 			choice5 = Display.protectedIntInput(commandPrompt3);
 			System.out.println("");
-			if (choice5 == 1) // l'utilisateur choisi résoudre manuellement
+			if (choice5 == 1) // l'utilisateur choisi algo1
 			{
 				System.out.println("==>Execution de l'algorithme 1 :");
 				Algorithm.algorithm1(villeTab, villeTab.length);
 				displayScore(villeTab);
 			}
-			else if (choice5 == 2) // l'utilisateur choisi résoudre automatiquement
+			else if (choice5 == 2) // l'utilisateur choisi algo2
 			{
 				System.out.println("==>Execution de l'algorithme 2 :");
 				Algorithm.algorithm2(villeTab, villeTab.length);
 				displayScore(villeTab);
 			}
-			else if (choice5 == 3) // l'utilisateur choisi de sauvegarder
+			else if (choice5 == 3) // l'utilisateur choisi Thanos
 			{
-				System.out.println("<!>Code pas encore fini<!>");
+				System.out.println("==>Execution de l'algorithme Thanos :");
+				Algorithm.algorithmCustom(villeTab);
+				displayThanos(villeTab);
+				System.out.println("");
+				System.out.println("==>Vérification des contraintes d'accessibilité :");
+				if (Town.checkConstraintAccess(villeTab)==false)
+				{
+					System.out.println("<!>L'agglomération ne respecte pas les contraintes d'accessibilité<!>");
+				}
+				else if (Town.checkConstraintAccess(villeTab)==true)
+				{
+					System.out.println("*L'agglomération respecte les contraintes d'accessibilité*");
+				}
+				displayScore(villeTab);
 			}
 			else if (choice5 == 4)
 			{
