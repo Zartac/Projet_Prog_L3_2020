@@ -44,33 +44,36 @@ public class DisplayRendu2 {
 	 * @param villeTab tableau de ville précedemment créé
 	 */
 	public static void displayTopMenu(Town[] villeTab) {
-		int choice4;
-		String commandPrompt3 = "==>Veuillez entrer votre choix :";
-		do {
-			displayInterface1();
-			choice4 = Display.protectedIntInput(commandPrompt3);
-			if (choice4 == 1) // l'utilisateur choisi résoudre manuellement
-			{
-				Display.displaySchool(villeTab);
-				displayScore(villeTab);
-			}
-			else if (choice4 == 2) // l'utilisateur choisi résoudre automatiquement
-			{
-				displayAutoMenu(villeTab);
-			}
-			else if (choice4 == 3) // l'utilisateur choisi de sauvegarder
-			{
-				System.out.println("<!>Code pas encore fini<!>");
-			}
-			else if (choice4 == 4)
-			{
-				break;
-			}
-			else // l'utilisateur tape un choix qui n'existe pas
-			{
-				System.out.println("<!>Vous n'avez pas entré un choix valide<!>");
-			}
-		} while (choice4 != 4);
+		if (villeTab.length!=0)
+		{
+			int choice4;
+			String commandPrompt3 = "==>Veuillez entrer votre choix :";
+			do {
+				displayInterface1();
+				choice4 = Display.protectedIntInput(commandPrompt3);
+				if (choice4 == 1) // l'utilisateur choisi résoudre manuellement
+				{
+					Display.displaySchool(villeTab);
+					displayScore(villeTab);
+				}
+				else if (choice4 == 2) // l'utilisateur choisi résoudre automatiquement
+				{
+					displayAutoMenu(villeTab);
+				}
+				else if (choice4 == 3) // l'utilisateur choisi de sauvegarder
+				{
+					System.out.println("<!>Code pas encore fini<!>");
+				}
+				else if (choice4 == 4)
+				{
+					break;
+				}
+				else // l'utilisateur tape un choix qui n'existe pas
+				{
+					System.out.println("<!>Vous n'avez pas entré un choix valide<!>");
+				}
+			} while (choice4 != 4);
+		}
 	}
 	
 	/**

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import agglomeration.Town;
+import menu.DisplayRendu2;
 
 /**
  * Classe pour la lecture et l'écriture de sauvegarde.
@@ -119,6 +120,10 @@ public class Save {
 	{
 		System.out.println("==>Conversion de la sauvegarde en agglomération :");
 		Town[] villeTab = Town.createTownLoop(Save.getNbTown(), Save.getNameTown());
+		if (villeTab.length==0)
+		{
+			System.out.println("<!>L'agglomération est inexistante<!>");
+		}
 		for (int i = 0; i < townRoad1.size(); ++i)
 		{
 			Town.securedLinkCreation(villeTab, convertTownNameToSerial(villeTab, townRoad1.get(i)), convertTownNameToSerial(villeTab, townRoad2.get(i)));
@@ -129,7 +134,11 @@ public class Save {
 		}
 		System.out.println("");
 		System.out.println("==>Vérification des contraintes d'accessibilité :");
-		if (Town.checkConstraintAccess(villeTab)==false)
+		if (villeTab.length==0)
+		{
+			System.out.println("<!>L'agglomération est inexistante<!>");
+		}
+		else if (Town.checkConstraintAccess(villeTab)==false)
 		{
 			System.out.println("<!>L'agglomération ne respecte pas les contraintes d'accessibilité<!>");
 			for (int i = 0; i < villeTab.length; ++i) 
@@ -137,10 +146,12 @@ public class Save {
 				villeTab[i].setSchool(true);
 			}
 			System.out.println("*Une école a été ajouté dans chaque ville de l'agglomération*");
+			DisplayRendu2.displayScore(villeTab);
 		}
 		else if (Town.checkConstraintAccess(villeTab)==true)
 		{
 			System.out.println("*L'agglomération respecte les contraintes d'accessibilité*");
+			DisplayRendu2.displayScore(villeTab);
 		}
 		return villeTab;
 	}

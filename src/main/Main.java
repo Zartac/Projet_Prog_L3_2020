@@ -31,15 +31,18 @@ public class Main {
 		else if (args.length != 0) // Argument détecté, on lance le 2ème rendu du projet.
 		{
 			if(args[0].contains("nyancat")) DisplayRendu2.nyan();
-			Display.displayLaunch();
-			try {
-				Save.saveLoader(args[0]);
-			} catch (IOException e) {
-				e.printStackTrace();
+			else
+			{
+				Display.displayLaunch();
+				try {
+					Save.saveLoader(args[0]);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				Town[] villeTab = Save.convertSaveToAgglo();
+				DisplayRendu2.displayTopMenu(villeTab);
+				Display.displayEnd();
 			}
-			Town[] villeTab = Save.convertSaveToAgglo();
-			DisplayRendu2.displayTopMenu(villeTab);
-			Display.displayEnd();
 		}
 	}
 
