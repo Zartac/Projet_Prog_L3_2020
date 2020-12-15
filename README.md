@@ -14,11 +14,8 @@ Equipe:
 
 A coder:
 * Améliorer le chargement de sauvegarde (à compléter)
-* Créer un algorithme perso (pas urgent)
 * Créer les sauvegardes
-* sc.close() à caser
 * Créer des test pour ToString?
-* Créer les Easter Eggs
-* Finir les algo automatique
+* Finir les Easter Eggs
 * JAVADOC!!!!!!!!!!!
 * ORTHOGRAPHE!!

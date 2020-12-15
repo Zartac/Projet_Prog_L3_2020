@@ -40,7 +40,7 @@ public class DisplayRendu2 {
 	}
 	
 	/**
-	 * Affichage du Easter Egg, tradition du DUT AS de l'IUT Descartes!
+	 * Affichage du Easter Egg, aujourd'hui, c'est sur le thème Avengers!
 	 */
 	public static void displayThanos(Town[] villeTab)
 	{
@@ -48,7 +48,6 @@ public class DisplayRendu2 {
 				"- You couldn't live with your own failure.",
 				"- Where did that bring you?",
                 "- Back to me.",
-                "- I will first snap every school out of existence."
             };
         for (int i = 0; i < thanos1.length; ++i) {
         	try {
@@ -60,7 +59,13 @@ public class DisplayRendu2 {
             System.out.println(thanos1[i]);
         }
         System.out.println("");
-        System.out.println("<!>Toutes les écoles se sont volatilisés<!>");
+    	try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+			e.printStackTrace();
+		}
+    	System.out.println("<!>Toutes les écoles se sont volatilisés<!>");        
         ArrayList<Integer> tempSchool = new ArrayList<Integer>();
         for (int i = 0; i < villeTab.length; ++i)
         {
@@ -71,6 +76,7 @@ public class DisplayRendu2 {
         }
         System.out.println("");
 		String thanos2[] = {
+                "- I just snapped every school out of existence.",
 				"- I will now build schools.",
 				"- Where they're needed.",
             };
@@ -84,11 +90,22 @@ public class DisplayRendu2 {
             System.out.println(thanos2[i]);
         }
         System.out.println("");
-        for (int i = 0; i < tempSchool.size(); ++i)
-        {
-        	System.out.println(ToString.toStringSchoolAdded(villeTab[tempSchool.get(i)-1]));
-        }
-    	
+    	try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+			e.printStackTrace();
+		}
+    	for (int i = 0; i < tempSchool.size(); ++i)
+    	{
+    		System.out.println(ToString.toStringSchoolAdded(villeTab[tempSchool.get(i)-1]));    		
+    	}
+    	try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+			e.printStackTrace();
+		}
 	}
 	
 	public static void nyan() 
