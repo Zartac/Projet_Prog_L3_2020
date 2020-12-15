@@ -32,7 +32,6 @@ public class Main {
 		{
 			if(args[0].contains("nyancat")) DisplayRendu2.nyan();
 			Display.displayLaunch();
-			System.out.println("==>Lecture du fichier de sauvegarde :");
 			try {
 				Save.saveLoader(args[0]);
 			} catch (IOException e) {

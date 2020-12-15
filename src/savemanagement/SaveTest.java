@@ -14,7 +14,7 @@ class SaveTest {
 	@Test
 	void test() {
 		new Save();
-		ArrayList<String> alphabetLimited = new ArrayList<String>();
+		ArrayList<String> alphabetLimited = new ArrayList<String>(); // on créer une liste de 8 noms.
 		alphabetLimited.add("A");
 		alphabetLimited.add("B");
 		alphabetLimited.add("C");
@@ -23,13 +23,13 @@ class SaveTest {
 		alphabetLimited.add("F");
 		alphabetLimited.add("G");
 		alphabetLimited.add("H");
-		Save.setNameTown(alphabetLimited);
-		Save.setNbTown(alphabetLimited.size());
-		Save.setSchoolLocation(alphabetLimited);
-		Town[] villeTab = Town.createTownLoop(Save.getNbTown(), Save.getNameTown());
-		for (int i = 0; i < villeTab.length; ++i)
+		Save.setNameTown(alphabetLimited); // on créer une liste de noms de villes avec les 8 noms
+		Save.setNbTown(Save.getNameTown().size()); // le nombre de ville correspond à la taille de la liste de noms, donc 8
+		Save.setSchoolLocation(alphabetLimited); // on met une école partout
+		Town[] villeTab = Town.createTownLoop(Save.getNbTown(), Save.getNameTown()); // création de ville
+		for (int i = 0; i < villeTab.length; ++i) 
 		{
-			assertEquals(alphabetLimited.get(i), villeTab[i].getName());			
+			assertEquals(alphabetLimited.get(i), villeTab[i].getName()); // on vérifie que les villes ont bel et bien les noms qu'on veut.		
 		}
 	}
 

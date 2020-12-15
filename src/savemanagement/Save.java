@@ -31,6 +31,7 @@ public class Save {
 	 */
 	public static void saveLoader(String path) throws IOException// Fonction ABSOLUMENT pas testé! -- Jack
 	{
+		System.out.println("==>Lecture du fichier de sauvegarde :");
 		try {
 
             File f = new File(path);
@@ -71,17 +72,18 @@ public class Save {
             	System.out.println("<!>Villes doublons détecté<!>");
             	System.out.println("*Retrait des villes doublons*");
             	nameTown = nameTownSingle;
+            	System.out.println("");
                 System.out.println("Nom des villes sans les doublons :");
                 for(int i=0;i<nameTown.size();i++) {
                 	System.out.print(nameTown.get(i)+" ");
                 }
+                System.out.println("");
             }
-            System.out.println("");
-
         } catch (IOException e) {
 			System.out.println("<!>Erreur lecture de la sauvegarde<!>");
 			System.out.println("<!>Vérifiez le chemin de votre sauvegarde entré en argument et relancez<!>");
         }
+		System.out.println("");
 	}
 	
 	public static void saveRecap()
@@ -115,6 +117,7 @@ public class Save {
 	
 	public static Town[] convertSaveToAgglo()
 	{
+		System.out.println("==>Conversion de la sauvegarde en agglomération :");
 		Town[] villeTab = Town.createTownLoop(Save.getNbTown(), Save.getNameTown());
 		for (int i = 0; i < townRoad1.size(); ++i)
 		{
@@ -123,6 +126,21 @@ public class Save {
 		for (int i = 0; i < schoolLocation.size(); ++i)
 		{
 			Town.securedAddSchool(villeTab,convertTownNameToSerial(villeTab, schoolLocation.get(i)));
+		}
+		System.out.println("");
+		System.out.println("==>Vérification des contraintes d'accessibilité :");
+		if (Town.checkConstraintAccess(villeTab)==false)
+		{
+			System.out.println("<!>L'agglomération ne respecte pas les contraintes d'accessibilité<!>");
+			for (int i = 0; i < villeTab.length; ++i) 
+			{
+				villeTab[i].setSchool(true);
+			}
+			System.out.println("*Une école a été ajouté dans chaque ville de l'agglomération*");
+		}
+		else if (Town.checkConstraintAccess(villeTab)==true)
+		{
+			System.out.println("*L'agglomération respecte les contraintes d'accessibilité*");
 		}
 		return villeTab;
 	}
