@@ -45,9 +45,9 @@ public class DisplayRendu2 {
 	public static void displayThanos(Town[] villeTab)
 	{
 		String thanos1[] = {
-				"- You couldn't live with your own failure.",
-				"- Where did that bring you?",
-                "- Back to me.",
+				"- The hardest choices",
+				"- Require the strongest wills.",
+				"- I am inevitable."
             };
         for (int i = 0; i < thanos1.length; ++i) {
         	try {
@@ -76,9 +76,9 @@ public class DisplayRendu2 {
         }
         System.out.println("");
 		String thanos2[] = {
-                "- I just snapped every school out of existence.",
-				"- I will now build schools.",
-				"- Where they're needed.",
+                "- Reality can be whatever I want.",
+				"- What did it cost?",
+				"- Everything."
             };
         for (int i = 0; i < thanos2.length; ++i) {
         	try {
@@ -107,6 +107,23 @@ public class DisplayRendu2 {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
+        System.out.println("");
+		String thanos3[] = {
+                "- You couldn't live with your own failure.",
+				"- And where did that bring you?",
+				"- Back to me."
+            };
+        for (int i = 0; i < thanos2.length; ++i) {
+        	try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
+				e.printStackTrace();
+			}
+            System.out.println(thanos3[i]);
+        }
+    	
+    	
 	}
 	
 	public static void nyan() 
