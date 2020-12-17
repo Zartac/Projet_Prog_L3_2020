@@ -93,9 +93,9 @@ public class Save {
 	}
 	
 	/**
-	 * permet de créer un nouveau fichier à partir du chemin spécifié par l'utilisateur
-	 * ce fichier contient la liste l des informations à stocker
-	 * @param l texte à écrire dans la sauvegarde
+	 * Permet de créer un nouveau fichier à partir du chemin spécifié par l'utilisateur,
+	 * ce fichier contient la liste l des informations à stocker.
+	 * @param l texte à écrire dans la sauvegarde.
 	 */
 	public static void createSave(ArrayList<String> l) {
         FileWriter w;
@@ -118,6 +118,9 @@ public class Save {
 		s.close();
 	}
 	
+	/**
+	 * Affichage recapitulatif de la sauvegarde.
+	 */
 	public static void saveRecap()
 	{
 		System.out.println("*Information lus dans la sauvegarde :*");
@@ -146,6 +149,11 @@ public class Save {
         }
         System.out.println("");
 	}
+	
+	/**
+	 * Converti une sauvegarde en agglomeration.
+	 * @return villeTab l'agglomeration décrite par la sauvegarde.
+	 */
 	
 	public static Town[] convertSaveToAgglo()
 	{
@@ -186,7 +194,12 @@ public class Save {
 		}
 		return villeTab;
 	}
-	
+	/**
+	 * Cherche pour le nom d'une ville donnée son numéro de série.
+	 * @param villeTab agglomeration contenant la ville.
+	 * @param name nom de la ville recherchée.
+	 * @return serial le numéro de série de la ville recherchée.
+	 */
 	public static int convertTownNameToSerial(Town[] villeTab, String name)
 	{
 		int serial = 0; // La ville avec un numéro de série 0 n'existe pas

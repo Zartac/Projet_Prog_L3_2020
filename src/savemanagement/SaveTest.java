@@ -9,6 +9,14 @@ import org.junit.jupiter.api.Test;
 import menu.Display;
 import agglomeration.Town;
 
+/**
+ * Classe de test pour la classe "Save.java".
+ * 
+ * @author Amanda Messahel, Johan Laforge, Jack Thay
+ * 
+ *
+ */
+
 class SaveTest {
 
 	@Test

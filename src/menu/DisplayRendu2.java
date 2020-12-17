@@ -30,7 +30,7 @@ public class DisplayRendu2 {
 	{
 		System.out.println("");
 		System.out.println("|=============================================================|");
-		System.out.println("|=================== Sélection automatique ===================|");
+		System.out.println("|================= Sélection de l'algorithme =================|");
 		System.out.println("|=============================================================|");
 		System.out.println("|1) Utiliser l'algorithme 1 (naïf).                           |");
 		System.out.println("|2) Utiliser l'algorithme 2 (moins naïf).                     |");
@@ -41,6 +41,7 @@ public class DisplayRendu2 {
 	
 	/**
 	 * Affichage du Easter Egg, aujourd'hui, c'est sur le thème Avengers!
+	 * @param villeTab l'agglomeration qui subit l'algorithme
 	 */
 	public static void displayThanos(Town[] villeTab)
 	{
@@ -201,7 +202,7 @@ public class DisplayRendu2 {
 	}
 	
 	/**
-	 * Affichage des invites de commandes utilisateurs pour le menu principale .
+	 * Affichage de la selection des algorithmes.
 	 * @param villeTab tableau de ville précedemment créé
 	 */
 	public static void displayAutoMenu(Town[] villeTab) {
@@ -251,6 +252,10 @@ public class DisplayRendu2 {
 		} while (choice5 != 4);
 	}
 	
+	/**
+	 * Affichage du score de l'agglomeration.
+	 * @param villeTab agglomeration dont on veut le score.
+	 */	
 	public static void displayScore(Town[] villeTab)
 	{
 		System.out.println("");

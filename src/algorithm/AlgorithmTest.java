@@ -8,7 +8,16 @@ import org.junit.jupiter.api.Test;
 
 import agglomeration.Town;
 
+/**
+ * Classe de test pour la classe "Algorithm.java".
+ * 
+ * @author Amanda Messahel, Johan Laforge, Jack Thay
+ * 
+ *
+ */
+
 class AlgorithmTest {
+	
 
 	@Test
 	void test() {
