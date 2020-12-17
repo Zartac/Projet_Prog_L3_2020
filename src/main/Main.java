@@ -18,10 +18,7 @@ import savemanagement.Save;
 public class Main {
 	public static void main(String[]args)
 	{
-		//ArrayList<String> alphabet=Display.createAlphabet();
-		//Save.createSave(alphabet);
-		DisplayRendu2.nyan();
-		/*if (args.length == 0) // Aucun argument, on lance le 1er rendu du projet.
+		if (args.length == 0) // Aucun argument, on lance le 1er rendu du projet.
 		{
 			ArrayList<String>alphabet = Display.createAlphabet();
 			Display.displayLaunch();
@@ -46,7 +43,7 @@ public class Main {
 				DisplayRendu2.displayTopMenu(villeTab);
 				Display.displayEnd();
 			}
-		}*/
+		}
 	}
 
 }
