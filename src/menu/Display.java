@@ -259,7 +259,6 @@ public class Display
 	 */
 	public static int protectedIntInput(String prompt)
 	{
-		//TODO: trouver où mettre le sc.close()
 		boolean correct = false;
 		Scanner sc = new Scanner(System.in);
 		int tempInt=0;
