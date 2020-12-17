@@ -1,11 +1,15 @@
 package savemanagement;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Scanner;
 
 import agglomeration.Town;
 import menu.DisplayRendu2;
@@ -80,11 +84,38 @@ public class Save {
                 }
                 System.out.println("");
             }
+            b.close();
         } catch (IOException e) {
 			System.out.println("<!>Erreur lecture de la sauvegarde<!>");
 			System.out.println("<!>Vérifiez le chemin de votre sauvegarde entré en argument et relancez<!>");
         }
 		System.out.println("");
+	}
+	
+	/**
+	 * permet de créer un nouveau fichier à partir du chemin spécifié par l'utilisateur
+	 * ce fichier contient la liste l des informations à stocker
+	 * @param l texte à écrire dans la sauvegarde
+	 */
+	public static void createSave(ArrayList<String> l) {
+        FileWriter w;
+        Scanner s=new Scanner(System.in);
+        System.out.println("Chemin du fichier : ");
+        String chemin=s.nextLine();
+		try {
+			w = new FileWriter(chemin);
+			BufferedWriter out = new BufferedWriter(w);
+			for(int i=0;i<l.size();i++) {
+				out.write(l.get(i));
+				out.write("\n");
+			}
+			out.close();
+		} catch (IOException e) {
+			System.out.println("Le chemin fourni n'est pas valide !");
+			System.out.println("Veuillez entrez un nouveau chemin : ");
+			createSave(l);
+		}
+		s.close();
 	}
 	
 	public static void saveRecap()
