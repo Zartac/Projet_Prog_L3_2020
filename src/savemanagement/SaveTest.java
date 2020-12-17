@@ -29,8 +29,13 @@ class SaveTest {
 		Town[] villeTab = Town.createTownLoop(Save.getNbTown(), Save.getNameTown()); // création de ville
 		for (int i = 0; i < villeTab.length; ++i) 
 		{
-			assertEquals(alphabetLimited.get(i), villeTab[i].getName()); // on vérifie que les villes ont bel et bien les noms qu'on veut.		
+			assertEquals(alphabetLimited.get(i), villeTab[i].getName()); // on vérifie que les villes ont bel et bien les noms qu'on veut.
 		}
+		for (int i = 0; i < villeTab.length; ++i) 
+		{
+			assertEquals(i+1,Save.convertTownNameToSerial(villeTab, alphabetLimited.get(i))); // on vérifie le nom de chaque ville correspond avec le bon serial.
+		}
+		
 	}
 
 }
