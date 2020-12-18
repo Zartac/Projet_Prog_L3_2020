@@ -95,27 +95,35 @@ public class Save {
 	/**
 	 * Permet de créer un nouveau fichier à partir du chemin spécifié par l'utilisateur,
 	 * ce fichier contient la liste l des informations à stocker.
-	 * @param l texte à écrire dans la sauvegarde.
+	 * @param stringSave texte à écrire dans la sauvegarde.
 	 */
-	public static void createSave(ArrayList<String> l) {
+	public static void createSave(ArrayList<String> stringSave) {
         FileWriter w;
-        System.out.println("==>Veuillez entrer le chemin pour la sauvegarde : ");
+        boolean correct = false;
         Scanner s=new Scanner(System.in);
-        String chemin=s.nextLine();
-		try {
-			w = new FileWriter(chemin);
-			BufferedWriter out = new BufferedWriter(w);
-			for(int i=0;i<l.size();i++) {
-				out.write(l.get(i));
-				out.write("\n");
-			}
-			out.close();
-		} catch (IOException e) {
-			System.out.println("<!>Le chemin fourni n'est pas valide<!>");
-			System.out.println("<!>Le nom du fichier de sauvegarde doit aussi être indiqué<!>");
-			createSave(l);
-		}
-		s.close();
+        do { // Boucle au cas où l'utilisateur n'a pas correctement crée sa sauvegarde
+            System.out.println("===>Veuillez entrer le chemin pour la sauvegarde : ");
+            String chemin=s.nextLine();
+    		try {
+    			w = new FileWriter(chemin);
+    			BufferedWriter out = new BufferedWriter(w);
+    			for(int i=0;i<stringSave.size();i++) {
+    				out.write(stringSave.get(i));
+    				out.write("\n");
+    			}
+    			out.close();
+    			File f = new File(chemin);
+    			if (f.exists()) // On veut vérifier que la sauvegarde éxiste.
+    			{
+    				System.out.println("~~>Ecriture sauvegarde : " + f.getAbsolutePath());
+    				System.out.println("*Sauvegarde réussi*");
+    				correct=true;
+    			}
+    		} catch (IOException e) { // Une erreur a eu lieu dans l'écriture de la sauvegarde.
+    			System.out.println("<!>Le chemin fourni n'est pas valide<!>");
+    			System.out.println("<!>Le nom du fichier de sauvegarde doit aussi être indiqué<!>");
+    		}
+        }while(correct==false);
 	}
 	
 	/**
