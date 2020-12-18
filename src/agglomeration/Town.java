@@ -54,7 +54,7 @@ public class Town
 	 * Vérifie la présence ou non d'une école dans la ville.
 	 * @return school true/false si en effet, il existe une école dans cette ville.
 	 */
-	public boolean isSchool() 
+	public boolean getSchool() 
 	{
 		return school;
 	}
@@ -133,7 +133,7 @@ public class Town
 		boolean check=false;
 		for(int i=0; i<tempList.size();i++) {
 			int tempNumber = tempList.get(i); // On met en mémoire la valeur de la liste d'adjacence en position "i".
-			if(villeTab[tempNumber-1].isSchool()==true) check=true; // -1 à tempNumber car le tableau commence depuis 0 et les serials depuis 1
+			if(villeTab[tempNumber-1].getSchool()==true) check=true; // -1 à tempNumber car le tableau commence depuis 0 et les serials depuis 1
 		}
 		return check;
 	}
@@ -208,11 +208,11 @@ public class Town
 	{
 		if (Town.checkTownExist(villeTab,town)==true) // On vérifie que la ville existe
 		{
-			if(villeTab[town-1].isSchool()==true)
+			if(villeTab[town-1].getSchool()==true)
 				{
 				System.out.println("<!>Cette ville possède déjà une école<!>"); // on vérifie que la ville n'a pas déjà une école
 				}
-			else if (villeTab[town-1].isSchool()==false) // si cette ville n'a pas d'école
+			else if (villeTab[town-1].getSchool()==false) // si cette ville n'a pas d'école
 			{ 
 				villeTab[town-1].setSchool(true);
 				System.out.println(ToString.toStringSchoolAdded(villeTab[town-1]));
@@ -234,7 +234,7 @@ public class Town
 	{
 		if (Town.checkTownExist(villeTab,town)==true) // On vérifie que la ville existe
 		{
-			if(villeTab[town-1].isSchool()==true) // On vérifie qu'il y'a une école à retirer.
+			if(villeTab[town-1].getSchool()==true) // On vérifie qu'il y'a une école à retirer.
 			{
 				if(Town.removableSchool(villeTab, town)==true) // On vérifie la liste d'adjacence de la ville
 				{
@@ -243,7 +243,7 @@ public class Town
 				}
 				else System.out.println(ToString.toStringNoSchool(villeTab[town-1]));
 			}
-			else if (villeTab[town-1].isSchool()==false) System.out.println("<!>Cette ville n'a pas d'école<!>");
+			else if (villeTab[town-1].getSchool()==false) System.out.println("<!>Cette ville n'a pas d'école<!>");
 			System.out.println(ToString.toStringSchoolList(villeTab));
 		}
 		else // on suppose que le choix l'utilisateur n'existe pas
@@ -261,7 +261,7 @@ public class Town
 	{
 		for (int i = 0; i < villeTab.length; ++i) // boucle qui permet de parcourir le tableau de ville
 		{
-			if (villeTab[i].isSchool()==false && checkLinkSchool(villeTab, villeTab[i].getSerial())==false)
+			if (villeTab[i].getSchool()==false && checkLinkSchool(villeTab, villeTab[i].getSerial())==false)
 				return false;
 		}
 		return true;

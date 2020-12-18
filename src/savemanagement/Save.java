@@ -159,11 +159,11 @@ public class Save {
 		}
 		for (int i = 0; i<townRoad1.size();++i) // Comme le rendu 2 ne permet pas d'ajouter de route, on récupère les noms de villes de la sauvegarde.
 		{
-			stringSave.add("route("+townRoad1.get(i)+","+townRoad1.get(i)+").");
+			stringSave.add("route("+townRoad1.get(i)+","+townRoad2.get(i)+").");
 		}
 		for (int i = 0; i<villeTab.length;++i) // On récupère la position des écoles dans l'agglomération courante.
 		{
-			if(villeTab[i].isSchool()==true)
+			if(villeTab[i].getSchool()==true)
 			{
 				stringSave.add("ecole("+villeTab[i].getName()+").");
 			}

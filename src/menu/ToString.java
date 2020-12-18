@@ -150,7 +150,7 @@ public class ToString {
 		b.append("*Les villes avec école :");
 		for (int i = 0; i < villeTab.length; ++i) // boucle qui permet de parcourir le tableau de ville
 		{
-			if (villeTab[i].isSchool() == true)
+			if (villeTab[i].getSchool() == true)
 			{
 				b.append(" ");
 				b.append(villeTab[i].getName());

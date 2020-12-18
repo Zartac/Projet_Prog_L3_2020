@@ -72,7 +72,7 @@ public class DisplayRendu2 {
         ArrayList<Integer> tempSchool = new ArrayList<Integer>();
         for (int i = 0; i < villeTab.length; ++i)
         {
-        	if (villeTab[i].isSchool()==true)
+        	if (villeTab[i].getSchool()==true)
         	{
         		tempSchool.add(villeTab[i].getSerial());
         	}
@@ -129,7 +129,7 @@ public class DisplayRendu2 {
     	
 	}
 	/**
-	 * Affichage easteregg NyanCat
+	 * Affichage Easter Egg NyanCat
 	 */
 	public static void nyan() 
 	{
@@ -166,13 +166,12 @@ public class DisplayRendu2 {
 		System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");	
 	}
 	
-	
+	/**
+	 * Affichage Easter Egg Thanos
+	 */
 	public static void afficheThanos() {
 		System.out.println(
 				  "``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````\r\n"
-				+ "``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````\r\n"
-				+ "``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````\r\n"
-				+ "``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````\r\n"
 				+ "``````````````````````````````````````````````````````````````````````,;i++++*i:``````````````````````````````````````````````````````````````````````\r\n"
 				+ "``````````````````````````````````````````````````````````````````,*zMWWWWWWWMWWWn+:``````````````````````````````````````````````````````````````````\r\n"
 				+ "````````````````````````````````````````````````````````````````inWWWWWWWMMMWMWWWWWWx*.```````````````````````````````````````````````````````````````\r\n"
@@ -247,7 +246,7 @@ public class DisplayRendu2 {
 				+ "``````````````````````````````````````````````````iWW#,;*WW#+WW*:MW#:zWW:;WW#:nWx:*WWi:MWn;WW#::;WWz``````````````````````````````````````````````````\r\n"
 				+ "```````````````````````````````````````````````````xWW::#WWi+WWi;MWz:zWW:;WW+:nWx:*WW*:MWz:MWn,,xWM,``````````````````````````````````````````````````\r\n"
 				+ "```````````````````````````````````````````````````;WWx:zWM:+WW;:WWz;#WW:iWW+:nWx:*WW*:MWz:nWM:+WW+```````````````````````````````````````````````````\r\n"
-				+ "` ``````````````````````````````````````````````````#WW#zWM:+WW;:MW#:zWW:iWW+;nWM:*WW*:MWz:zWMiWWx````````````````````````````````````````````````````\r\n"
+				+ "````````````````````````````````````````````````````#WW#zWM:+WW;:MW#:zWW:iWW+;nWM:*WW*:MWz:zWMiWWx````````````````````````````````````````````````````\r\n"
 				+ "````````````````````````````````````````````````````.MWWxWW;+WWi:MWz:zWW,iWW+:nWM:*WWi:MWn:xWMMWW:````````````````````````````````````````````````````\r\n"
 				+ "`````````````````````````````````````````````````````:WWWWW*+WWi,MWz,zWW,;WW+:nWx:*WW*:MWn:MWWWW*`````````````````````````````````````````````````````\r\n"
 				+ "``````````````````````````````````````````````````````iWWWWz+WWi,MWz,#WW:iWW+:nWx:iWWi:MWn*WWWW#``````````````````````````````````````````````````````\r\n"
@@ -259,9 +258,6 @@ public class DisplayRendu2 {
 				+ "````````````````````````````````````````````````````````````,nWWWWWWMWWWMMWWMMWWWMMWWWWWx:````````````````````````````````````````````````````````````\r\n"
 				+ "``````````````````````````````````````````````````````````````;nWWWWWWWWWWWWWWWWWWWWWWM*``````````````````````````````````````````````````````````````\r\n"
 				+ "````````````````````````````````````````````````````````````````,i+#################*:````````````````````````````````````````````````````````````````\r\n"
-				+ "``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````\r\n"
-				+ "``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````\r\n"
-				+ "``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````\r\n"
 				+ "``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````\r\n"
 				+ "");
 	}
@@ -323,29 +319,20 @@ public class DisplayRendu2 {
 			{
 				System.out.println("~~>Execution de l'algorithme 1 :");
 				Algorithm.algorithm1(villeTab, villeTab.length);
-				displayScore(villeTab);
+				
 			}
 			else if (choice5 == 2) // l'utilisateur choisi algorithme 2
 			{
 				System.out.println("~~>Execution de l'algorithme 2 :");
 				Algorithm.algorithm2(villeTab, villeTab.length);
-				displayScore(villeTab);
 			}
 			else if (choice5 == 3) // l'utilisateur choisi Thanos
 			{
 				System.out.println("~~>Intervention de Thanos :");
+				afficheThanos();
 				Algorithm.algorithmCustom(villeTab);
 				displayThanos(villeTab);
-				System.out.println("");
-				System.out.println("~~>Vérification des contraintes d'accessibilité :");
-				if (Town.checkConstraintAccess(villeTab)==false)
-				{
-					System.out.println("<!>L'agglomération ne respecte pas les contraintes d'accessibilité<!>");
-				}
-				else if (Town.checkConstraintAccess(villeTab)==true)
-				{
-					System.out.println("*L'agglomération respecte les contraintes d'accessibilité*");
-				}
+				displayConstraint(villeTab);
 				displayScore(villeTab);
 			}
 			else if (choice5 == 4)
@@ -368,6 +355,24 @@ public class DisplayRendu2 {
 		System.out.println("");
 		System.out.println("~~>Score de l'agglomération :");
 		System.out.println(ToStringRendu2.toStringScore(villeTab));
+	}
+	
+	/**
+	 * Affichage du respect des contraintes d'accessibilité de l'agglomeration.
+	 * @param villeTab agglomeration dont on veut le score.
+	 */	
+	public static void displayConstraint(Town[] villeTab)
+	{
+		System.out.println("");
+		System.out.println("~~>Vérification des contraintes d'accessibilité :");
+		if (Town.checkConstraintAccess(villeTab)==false)
+		{
+			System.out.println("<!>L'agglomération ne respecte pas les contraintes d'accessibilité<!>");
+		}
+		else if (Town.checkConstraintAccess(villeTab)==true)
+		{
+			System.out.println("*L'agglomération respecte les contraintes d'accessibilité*");
+		}
 	}
 
 }

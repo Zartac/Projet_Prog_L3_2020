@@ -2,8 +2,6 @@ package algorithm;
 
 import agglomeration.Town;
 import menu.DisplayRendu2;
-import menu.ToString;
-
 import java.util.Random;
 /**
  * Classe pour les de remplissage automatique des écoles dans une agglomération.
@@ -26,7 +24,7 @@ public class Algorithm {
 		do
 		{
 			int randomIndex = new Random().nextInt(villeTab.length); // selection d'un index au hasard parmi le tableau de Town.
-			if (villeTab[randomIndex].isSchool()==true)
+			if (villeTab[randomIndex].getSchool()==true)
 			{
 				Town.securedRemoveSchool(villeTab, randomIndex+1); // random+1 car cette fonction prend en parametres le serial de la ville et pas son index.
 			}
@@ -36,16 +34,8 @@ public class Algorithm {
 			}
 			i++;
 		} while (i<k);
-		System.out.println("");
-		System.out.println("==>Vérification des contraintes d'accessibilité :");
-		if (Town.checkConstraintAccess(villeTab)==false)
-		{
-			System.out.println("<!>L'agglomération ne respecte pas les contraintes d'accessibilité<!>");
-		}
-		else if (Town.checkConstraintAccess(villeTab)==true)
-		{
-			System.out.println("*L'agglomération respecte les contraintes d'accessibilité*");
-		}
+		DisplayRendu2.displayConstraint(villeTab);
+		DisplayRendu2.displayScore(villeTab);
 		return villeTab;
 	}
 	
@@ -62,7 +52,7 @@ public class Algorithm {
 		do
 		{
 			int randomIndex = new Random().nextInt(villeTab.length); // selection d'un index au hasard parmi le tableau de Town.
-			if (villeTab[randomIndex].isSchool()==true)
+			if (villeTab[randomIndex].getSchool()==true)
 			{
 				Town.securedRemoveSchool(villeTab, randomIndex+1); // random+1 car cette fonction prend en parametres le serial de la ville et pas son index
 			}
@@ -80,16 +70,8 @@ public class Algorithm {
 				i++;
 			}
 		} while (i<k);
-		System.out.println("");
-		System.out.println("==>Vérification des contraintes d'accessibilité :");
-		if (Town.checkConstraintAccess(villeTab)==false)
-		{
-			System.out.println("<!>L'agglomération ne respecte pas les contraintes d'accessibilité<!>");
-		}
-		else if (Town.checkConstraintAccess(villeTab)==true)
-		{
-			System.out.println("*L'agglomération respecte les contraintes d'accessibilité*");
-		}
+		DisplayRendu2.displayConstraint(villeTab);
+		DisplayRendu2.displayScore(villeTab);
 		return villeTab;
 	}
 	
@@ -116,7 +98,7 @@ public class Algorithm {
 			if (villeTab[i].getLink().size()==1)
 			{
 				int voisin =villeTab[i].getLink().get(0);
-				if (villeTab[voisin-1].isSchool()==false) 
+				if (villeTab[voisin-1].getSchool()==false) 
 				{
 					villeTab[voisin-1].setSchool(true);
 				}
@@ -134,7 +116,7 @@ public class Algorithm {
 			{
 				if (villeTab[i].getLink().size()==i)
 				{
-					if (villeTab[i].isSchool()==false)
+					if (villeTab[i].getSchool()==false)
 					{
 						villeTab[i].setSchool(true);
 					}
@@ -143,7 +125,7 @@ public class Algorithm {
 		} while (Town.checkConstraintAccess(villeTab)==false);
 		for (int i = 0; i < villeTab.length; ++i) // dernier passage pour retirer les écoles superflues
 		{
-			if (villeTab[i].isSchool()==true)
+			if (villeTab[i].getSchool()==true)
 			{
 				if (Town.removableSchool(villeTab, i+1)==true)
 				{
@@ -164,7 +146,7 @@ public class Algorithm {
 		int score = 0;
 		for (int i = 0; i < villeTab.length; ++i)
 		{
-			if(villeTab[i].isSchool()==true)
+			if(villeTab[i].getSchool()==true)
 			{
 				++score;
 			}
