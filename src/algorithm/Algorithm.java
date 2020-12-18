@@ -15,9 +15,9 @@ import java.util.Random;
 public class Algorithm {
 	
 	/**
-	 * Un algorithme d’approximation (naïf) pour la résolution de l'accessibilité des écoles dans une agglomération donné dans l'énoncé.
+	 * Un algorithme d’approximation (naïf) pour la résolution de l'accessibilité des écoles dans une agglomération donnée dans l'énoncé.
 	 * @param villeTab agglomération qu'on souhaite remlir.
-	 * @param k le nombre de tentative pour la résolution de l'accessibilité des écoles.
+	 * @param k le nombre de tentatives pour la résolution de l'accessibilité des écoles.
 	 * @return villeTab agglomération après avoir subi l'algorithme.
 	 */
 	public static Town[] algorithm1(Town[] villeTab, int k)
@@ -28,11 +28,11 @@ public class Algorithm {
 			int randomIndex = new Random().nextInt(villeTab.length); // selection d'un index au hasard parmi le tableau de Town.
 			if (villeTab[randomIndex].isSchool()==true)
 			{
-				Town.securedRemoveSchool(villeTab, randomIndex+1); // random+1 car cette fonction prend en parametre le serial de la ville et pas son index
+				Town.securedRemoveSchool(villeTab, randomIndex+1); // random+1 car cette fonction prend en parametres le serial de la ville et pas son index.
 			}
 			else
 			{
-				Town.securedAddSchool(villeTab, randomIndex+1); // random+1 car cette fonction prend en parametre le serial de la ville et pas son index				
+				Town.securedAddSchool(villeTab, randomIndex+1); // random+1 car cette fonction prend en parametres le serial de la ville et pas son index.			
 			}
 			i++;
 		} while (i<k);
@@ -52,7 +52,7 @@ public class Algorithm {
 	/**
 	 * Un algorithme d’approximation (un peu moins naïf) pour la résolution de l'accessibilité des écoles dans une agglomération donné dans l'énoncé.
 	 * @param villeTab agglomération qu'on souhaite remlir.
-	 * @param k le nombre de tentative pour la résolution de l'accessibilité des écoles.
+	 * @param k le nombre de tentatives pour la résolution de l'accessibilité des écoles.
 	 * @return villeTab agglomération après avoir subi l'algorithme.
 	 */
 	public static Town[] algorithm2(Town[] villeTab, int k)
@@ -64,11 +64,11 @@ public class Algorithm {
 			int randomIndex = new Random().nextInt(villeTab.length); // selection d'un index au hasard parmi le tableau de Town.
 			if (villeTab[randomIndex].isSchool()==true)
 			{
-				Town.securedRemoveSchool(villeTab, randomIndex+1); // random+1 car cette fonction prend en parametre le serial de la ville et pas son index
+				Town.securedRemoveSchool(villeTab, randomIndex+1); // random+1 car cette fonction prend en parametres le serial de la ville et pas son index
 			}
 			else
 			{
-				Town.securedAddSchool(villeTab, randomIndex+1); // random+1 car cette fonction prend en parametre le serial de la ville et pas son index				
+				Town.securedAddSchool(villeTab, randomIndex+1); // random+1 car cette fonction prend en parametres le serial de la ville et pas son index				
 			}
 			if (getScore(villeTab)<scoreCourant)
 			{
@@ -125,7 +125,7 @@ public class Algorithm {
 		/*
 		 * On commence par la ville avec la plus grande liste d'adjacence, et on lui ajoute une école,
 		 * on vérifie ensuite les contraintes d'accessibilités.
-		 * On continue avec le 2ème ville avec la plus grande liste d'adjacence, le 3ème...
+		 * On continue avec la 2ème ville avec la plus grande liste d'adjacence, la 3ème...
 		 * jusqu'à ce que l'agglomération respecte enfin les contraintes d'accessibilités
 		 */
 		do 
@@ -155,14 +155,14 @@ public class Algorithm {
 	}
 	
 	/**
-	 * Permet de récupérer un score d'une agglomération, le score étant le nombre d'école présente.
-	 * @param villeTab agglomération qu'on souhaite éxaminer.
-	 * @return score le score de l'agglomération éxaminé.
+	 * Permet de récupérer un score pour une agglomération, le score étant le nombre d'école présente dans l'agglomération.
+	 * @param villeTab agglomération qu'on souhaite examiner.
+	 * @return score le score de l'agglomération examinée.
 	 */
 	public static int getScore(Town[] villeTab)
 	{
 		int score = 0;
-		for (int i = 0; i < villeTab.length; ++i) // boucle qui permet de parcourir le tableau de ville
+		for (int i = 0; i < villeTab.length; ++i)
 		{
 			if(villeTab[i].isSchool()==true)
 			{

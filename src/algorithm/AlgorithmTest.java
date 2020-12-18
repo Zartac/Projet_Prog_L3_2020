@@ -46,9 +46,9 @@ class AlgorithmTest {
 		Town.securedLinkCreation(villeTab, 8, 9); //route(H,I)
 		Town.securedLinkCreation(villeTab, 8, 10); //route(H,J)
 		Town.securedLinkCreation(villeTab, 8, 11); //route(H,K)
-		Town.securedAddSchool(villeTab, 2); //ecole(B)
-		Town.securedAddSchool(villeTab, 5); //ecole(E)
-		Town.securedAddSchool(villeTab, 8); //ecole(H)
+		Town.securedAddSchool(villeTab, 2); //école(B)
+		Town.securedAddSchool(villeTab, 5); //école(E)
+		Town.securedAddSchool(villeTab, 8); //école(H)
 		assertEquals(3, Algorithm.getScore(villeTab)); // On vérifie que le score original de la ville est 3
 		Algorithm.algorithm1(villeTab, villeTab.length);
 		assertNotEquals(0, Algorithm.getScore(villeTab)); // On vérifie que l'algorithme 1 a bien trouvé une solution qui n'est pas 0

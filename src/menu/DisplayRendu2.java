@@ -49,7 +49,8 @@ public class DisplayRendu2 {
 		String thanos1[] = {
 				"- The hardest choices",
 				"- Require the strongest wills.",
-				"- I am inevitable."
+				"- I am inevitable.",
+				"- *SNAP*"
             };
         for (int i = 0; i < thanos1.length; ++i) {
         	try {
@@ -67,7 +68,7 @@ public class DisplayRendu2 {
 			Thread.currentThread().interrupt();
 			e.printStackTrace();
 		}
-    	System.out.println("<!>Toutes les écoles se sont volatilisés<!>");        
+    	System.out.println("<!>Toutes les écoles se sont volatilisées<!>");        
         ArrayList<Integer> tempSchool = new ArrayList<Integer>();
         for (int i = 0; i < villeTab.length; ++i)
         {
@@ -128,7 +129,7 @@ public class DisplayRendu2 {
     	
 	}
 	/**
-	 * affichage easteregg NyanCat
+	 * Affichage easteregg NyanCat
 	 */
 	public static void nyan() 
 	{
@@ -166,7 +167,7 @@ public class DisplayRendu2 {
 	}
 	
 	/**
-	 * Affichage des invites de commandes utilisateurs pour le menu principale .
+	 * Affichage de l'invite de commandes utilisateurs pour le menu principale .
 	 * @param villeTab tableau de ville précedemment créé
 	 */
 	public static void displayTopMenu(Town[] villeTab) {
@@ -195,7 +196,7 @@ public class DisplayRendu2 {
 				{
 					break;
 				}
-				else // l'utilisateur tape un choix qui n'existe pas
+				else // l'utilisateur saisie un choix qui n'existe pas
 				{
 					System.out.println("<!>Vous n'avez pas entré un choix valide<!>");
 				}
@@ -214,13 +215,13 @@ public class DisplayRendu2 {
 			displayInterface2();
 			choice5 = Display.protectedIntInput(commandPrompt3);
 			System.out.println("");
-			if (choice5 == 1) // l'utilisateur choisi algo1
+			if (choice5 == 1) // l'utilisateur choisi algorithme 1
 			{
 				System.out.println("~~>Execution de l'algorithme 1 :");
 				Algorithm.algorithm1(villeTab, villeTab.length);
 				displayScore(villeTab);
 			}
-			else if (choice5 == 2) // l'utilisateur choisi algo2
+			else if (choice5 == 2) // l'utilisateur choisi algorithme 2
 			{
 				System.out.println("~~>Execution de l'algorithme 2 :");
 				Algorithm.algorithm2(villeTab, villeTab.length);
@@ -228,7 +229,7 @@ public class DisplayRendu2 {
 			}
 			else if (choice5 == 3) // l'utilisateur choisi Thanos
 			{
-				System.out.println("~~>Execution de l'algorithme Thanos :");
+				System.out.println("~~>Intervention de Thanos :");
 				Algorithm.algorithmCustom(villeTab);
 				displayThanos(villeTab);
 				System.out.println("");

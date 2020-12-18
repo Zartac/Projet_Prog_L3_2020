@@ -30,11 +30,10 @@ public class Save {
 	private static ArrayList<String> schoolLocation=new ArrayList<String>(); // liste des noms de villes qui ont une école
 	
 	/**
-	 * Affichage des invites de commandes utilisateurs pour charger une sauvegarde,
-	 * si sauvegarde vide, on redemande à l'utilisateur à resaisir le chemin.
-	 * @return object une File qui vraisemblablement n'est pas vide.
+	 * Affichage du chargement de la sauvegarde.
+	 * @param path le chemin du fichier de sauvegarde, soit l'argument qui est saisie dans la ligne de commande à l'execution du programme.
 	 */
-	public static void saveLoader(String path) throws IOException// Fonction ABSOLUMENT pas testé! -- Jack
+	public static void saveLoader(String path) throws IOException
 	{
 		System.out.println("~~>Lecture du fichier de sauvegarde :");
 		try {
@@ -95,11 +94,11 @@ public class Save {
             setNbTown(nameTownSingle.size());
             if (nameTown.size()!=nameTownSingle.size())
             {
-            	System.out.println("<!>Villes doublons détecté<!>");
+            	System.out.println("<!>Ville doublons détectée<!>");
             	System.out.println("*Retrait des villes doublons*");
             	nameTown = nameTownSingle;
             	System.out.println("");
-                System.out.println("Nom des villes sans les doublons :");
+                System.out.println("Noms des villes sans les doublons :");
                 for(int i=0;i<nameTown.size();i++) {
                 	System.out.print(nameTown.get(i)+" ");
                 }
@@ -122,7 +121,7 @@ public class Save {
         FileWriter w;
         boolean correct = false;
         Scanner s=new Scanner(System.in);
-        do { // Boucle au cas où l'utilisateur n'a pas correctement crée sa sauvegarde
+        do { // Boucle au cas où l'utilisateur n'a pas correctement créé sa sauvegarde
             System.out.println("===>Veuillez entrer le chemin pour la sauvegarde : ");
             String chemin=s.nextLine();
     		try {
@@ -134,7 +133,7 @@ public class Save {
     			}
     			out.close();
     			File f = new File(chemin);
-    			if (f.exists()) // On veut vérifier que la sauvegarde éxiste.
+    			if (f.exists()) // On veut vérifier que la sauvegarde existe.
     			{
     				System.out.println("~~>Ecriture de la sauvegarde : " + f.getAbsolutePath());
     				System.out.println("*Sauvegarde réussi*");
@@ -148,21 +147,21 @@ public class Save {
 	}
 	
 	/**
-	 * Permet de convertir l'agglomération actuellement travaillé, en ArrayList de String.
-	 * @param villeTab agglomération qui est actuellement travaillé
-	 * @return stringSave ArrayList de String contenant l'agglomération après modification.
+	 * Permet de convertir l'agglomération courante, en ArrayList de String.
+	 * @param villeTab l'agglomération courante
+	 * @return stringSave ArrayList de String contenant l'agglomération courante.
 	 */
 	public static ArrayList<String> createStringSave(Town[] villeTab) {
 		ArrayList<String> stringSave = new ArrayList<String>();
-		for (int i = 0; i<nameTown.size();++i) // Comme le rendu 2 ne permet pas de d'ajouter de ville, on récupère les noms de villes dans la sauvegarde.
+		for (int i = 0; i<nameTown.size();++i) // Comme le rendu 2 ne permet pas d'ajouter de ville, on récupère les noms de villes de la sauvegarde.
 		{
 			stringSave.add("ville("+nameTown.get(i)+").");
 		}
-		for (int i = 0; i<townRoad1.size();++i) // Comme le rendu 2 ne permet pas de d'ajouter de ville, on récupère les noms de villes dans la sauvegarde.
+		for (int i = 0; i<townRoad1.size();++i) // Comme le rendu 2 ne permet pas d'ajouter de route, on récupère les noms de villes de la sauvegarde.
 		{
 			stringSave.add("route("+townRoad1.get(i)+","+townRoad1.get(i)+").");
 		}
-		for (int i = 0; i<villeTab.length;++i) // Comme le rendu 2 ne permet pas de d'ajouter de ville, on récupère les noms de villes dans la sauvegarde.
+		for (int i = 0; i<villeTab.length;++i) // On récupère la position des écoles dans l'agglomération courante.
 		{
 			if(villeTab[i].isSchool()==true)
 			{
@@ -177,26 +176,26 @@ public class Save {
 	 */
 	public static void saveRecap()
 	{
-		System.out.println("*Information lus dans la sauvegarde :*");
-		System.out.println(">Nom des villes lu :");
+		System.out.println("*Informations lues dans la sauvegarde :*");
+		System.out.println(">Noms des villes lues :");
 		System.out.print(">>");
         for(int i=0;i<nameTown.size();i++) {
         	System.out.print(nameTown.get(i)+" ");
         }
         System.out.println("");
-        System.out.println(">Nom des villes à relier 1 :");
+        System.out.println(">Noms des villes à relier 1 :");
         System.out.print(">>");
         for(int i=0;i<townRoad1.size();i++) {
         	System.out.print(townRoad1.get(i)+" ");
         }
         System.out.println("");
-        System.out.println(">Nom des villes à relier 2 :");
+        System.out.println(">Noms des villes à relier 2 :");
         System.out.print(">>");
         for(int i=0;i<townRoad2.size();i++) {
         	System.out.print(townRoad2.get(i)+" ");
         }
         System.out.println("");
-        System.out.println(">Position des écoles :");
+        System.out.println(">Positions des écoles :");
         System.out.print(">>");
         for(int i=0;i<schoolLocation.size();i++) {
         	System.out.print(schoolLocation.get(i)+" ");
@@ -217,7 +216,7 @@ public class Save {
 		{
 			System.out.println("<!>L'agglomération est inexistante<!>");
 		}
-		for (int i = 0; i < townRoad1.size(); ++i) // Creation de route
+		for (int i = 0; i < townRoad1.size(); ++i) // Création de route
 		{
 			int serial1 = convertTownNameToSerial(villeTab, townRoad1.get(i));
 			int serial2 = convertTownNameToSerial(villeTab, townRoad2.get(i));
@@ -255,7 +254,7 @@ public class Save {
 			{
 				villeTab[i].setSchool(true);
 			}
-			System.out.println("*Une école a été ajouté dans chaque ville de l'agglomération*");
+			System.out.println("*Une école a été ajouté dans chaques villes de l'agglomération*");
 			DisplayRendu2.displayScore(villeTab);
 		}
 		else if (Town.checkConstraintAccess(villeTab)==true)
@@ -266,7 +265,7 @@ public class Save {
 		return villeTab;
 	}
 	/**
-	 * Cherche pour le nom d'une ville donnée son numéro de série.
+	 * Cherche le numéro de série pour une ville donnée.
 	 * @param villeTab agglomeration contenant la ville.
 	 * @param name nom de la ville recherchée.
 	 * @return serial le numéro de série de la ville recherchée.

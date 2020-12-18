@@ -106,8 +106,8 @@ public class Town
 	}
 	
 	/**
-	 * Vérifie, pour une ville donné, que le retrait de son école respecte les contraintes d'accessibilité.
-	 * @param villeTab le tableau de ville a analyser.
+	 * Vérifie, pour une ville donnée, que le retrait de son école respecte les contraintes d'accessibilité.
+	 * @param villeTab le tableau de ville à analyser.
 	 * @param choice le numéro de série de la ville dont on vérifie que son retrait d'école respecte les contraintes d'accessibilité.
 	 * @return check vérifie dans la liste d'adjacence si la ville n°"choice" possède une ville voisine avec une école.
 	 */
@@ -116,9 +116,9 @@ public class Town
 		if (checkConstraintAccess(villeTab)==false) // on vérifie que l'agglomération respecte les contraintes
 		{
 			villeTab[choice-1].setSchool(true); // on remet l'école là où elle était
-			return false; // on lui indique que c'est pas possible d'enlever l'école puisque ça fausse le respect des contraintes
+			return false; // on lui indique que c'est pas possible d'enlever l'école puisque çela fausse le respect des contraintes
 		}
-		villeTab[choice-1].setSchool(true); // on remet l'école même si les conditions sont toujours respectés
+		villeTab[choice-1].setSchool(true); // on remet l'école même si les contraintes sont toujours respectés
 		return true; // on lui indique que c'est possible
 	}
 	
@@ -254,7 +254,7 @@ public class Town
 	
 	/**
 	 * Vérifie, que l'agglomération est conforme aux contraintes du sujet.
-	 * @param villeTab le tableau de ville à analyser.
+	 * @param villeTab le tableau de villes à analyser.
 	 * @return true/false si en effet l'agglomération est conforme aux contraintes.
 	 */
 	public static boolean checkConstraintAccess(Town[] villeTab)
