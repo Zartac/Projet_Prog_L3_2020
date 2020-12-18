@@ -55,17 +55,38 @@ public class Save {
             	firstLetters=readLine.substring(0, 5); //coup de chance tous les mots font 5 lettres (5 exclu)
             	if(firstLetters.toLowerCase().equals("ville")) {
                 	listTownAndlistSchool=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(')'));
-            		nameTown.add(listTownAndlistSchool);
+                	if(listTownAndlistSchool.equals("")) // Au cas où on nous troll et que le nom de ville est vide.
+                	{
+                		System.out.println("<!>Nom de ville vide détecté<!>");
+                	}
+                	else
+                	{
+                		nameTown.add(listTownAndlistSchool);
+                	}
             	}
             	else if(firstLetters.toLowerCase().equals("ecole")) {
                 	listTownAndlistSchool=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(')'));
-            		schoolLocation.add(listTownAndlistSchool);
+                	if(listTownAndlistSchool.equals(""))
+                	{
+                		System.out.println("<!>Ecole sans ville détecté<!>");
+                	}
+                	else
+                	{
+                		schoolLocation.add(listTownAndlistSchool);
+                	}
             	}
             	else if(firstLetters.toLowerCase().equals("route")) {
             		listLink1=readLine.substring(readLine.indexOf('(')+1, readLine.indexOf(','));//+1 pour ne pas inclure la parenthese
             		listLink2=readLine.substring(readLine.indexOf(',')+1, readLine.indexOf(')'));//+1 pour ne pas inclure la virgule
-            		townRoad1.add(listLink1);
-            		townRoad2.add(listLink2);
+                	if(listLink1.equals("")||listLink2.equals(""))
+                	{
+                		System.out.println("<!>Route sans ville détecté<!>");
+                	}
+                	else
+                	{
+                		townRoad1.add(listLink1);
+                		townRoad2.add(listLink2);
+                	}
             	}
                 //System.out.println(readLine);
             }
@@ -115,7 +136,7 @@ public class Save {
     			File f = new File(chemin);
     			if (f.exists()) // On veut vérifier que la sauvegarde éxiste.
     			{
-    				System.out.println("~~>Ecriture sauvegarde : " + f.getAbsolutePath());
+    				System.out.println("~~>Ecriture de la sauvegarde : " + f.getAbsolutePath());
     				System.out.println("*Sauvegarde réussi*");
     				correct=true;
     			}
