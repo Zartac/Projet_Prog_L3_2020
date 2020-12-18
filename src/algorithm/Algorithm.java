@@ -122,18 +122,17 @@ public class Algorithm {
 				}
 			}
 		}
-		int maxLink = villeTab.length;
 		/*
-		 * on commence par la ville avec la plus grande liste d'adjacence, et on lui ajoute une école.
-		 * on continue avec le 2ème avec la plus grande liste d'adjacence, le 3ème...
+		 * On commence par la ville avec la plus grande liste d'adjacence, et on lui ajoute une école,
+		 * on vérifie ensuite les contraintes d'accessibilités.
+		 * On continue avec le 2ème ville avec la plus grande liste d'adjacence, le 3ème...
 		 * jusqu'à ce que l'agglomération respecte enfin les contraintes d'accessibilités
 		 */
 		do 
 		{
-			--maxLink;
-			for (int i = villeTab.length-1; i >= 0; --i)
+			for (int i = villeTab.length-1; i >= 0; --i) // -1 car une ville peut être relié à toutes les autres, mais pas à elle-même.
 			{
-				if (villeTab[i].getLink().size()==maxLink)
+				if (villeTab[i].getLink().size()==i)
 				{
 					if (villeTab[i].isSchool()==false)
 					{

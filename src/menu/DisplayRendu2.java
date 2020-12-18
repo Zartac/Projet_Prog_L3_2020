@@ -188,8 +188,7 @@ public class DisplayRendu2 {
 				}
 				else if (choice4 == 3) // l'utilisateur choisi de sauvegarder
 				{
-					System.out.println("<!>Code pas encore fini<!>");
-					ArrayList<String> save = Display.createAlphabet();
+					ArrayList<String> save = Save.createStringSave(villeTab);
 					Save.createSave(save);
 				}
 				else if (choice4 == 4)

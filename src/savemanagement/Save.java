@@ -148,6 +148,31 @@ public class Save {
 	}
 	
 	/**
+	 * Permet de convertir l'agglomération actuellement travaillé, en ArrayList de String.
+	 * @param villeTab agglomération qui est actuellement travaillé
+	 * @return stringSave ArrayList de String contenant l'agglomération après modification.
+	 */
+	public static ArrayList<String> createStringSave(Town[] villeTab) {
+		ArrayList<String> stringSave = new ArrayList<String>();
+		for (int i = 0; i<nameTown.size();++i) // Comme le rendu 2 ne permet pas de d'ajouter de ville, on récupère les noms de villes dans la sauvegarde.
+		{
+			stringSave.add("ville("+nameTown.get(i)+").");
+		}
+		for (int i = 0; i<townRoad1.size();++i) // Comme le rendu 2 ne permet pas de d'ajouter de ville, on récupère les noms de villes dans la sauvegarde.
+		{
+			stringSave.add("route("+townRoad1.get(i)+","+townRoad1.get(i)+").");
+		}
+		for (int i = 0; i<villeTab.length;++i) // Comme le rendu 2 ne permet pas de d'ajouter de ville, on récupère les noms de villes dans la sauvegarde.
+		{
+			if(villeTab[i].isSchool()==true)
+			{
+				stringSave.add("ecole("+villeTab[i].getName()+").");
+			}
+		}
+		return stringSave;
+	}
+	
+	/**
 	 * Affichage recapitulatif de la sauvegarde.
 	 */
 	public static void saveRecap()
