@@ -36,7 +36,7 @@ public class Save {
 	 */
 	public static void saveLoader(String path) throws IOException// Fonction ABSOLUMENT pas testé! -- Jack
 	{
-		System.out.println("==>Lecture du fichier de sauvegarde :");
+		System.out.println("~~>Lecture du fichier de sauvegarde :");
 		try {
 
             File f = new File(path);
@@ -99,8 +99,8 @@ public class Save {
 	 */
 	public static void createSave(ArrayList<String> l) {
         FileWriter w;
+        System.out.println("==>Veuillez entrer le chemin pour la sauvegarde : ");
         Scanner s=new Scanner(System.in);
-        System.out.println("Chemin du fichier : ");
         String chemin=s.nextLine();
 		try {
 			w = new FileWriter(chemin);
@@ -111,8 +111,8 @@ public class Save {
 			}
 			out.close();
 		} catch (IOException e) {
-			System.out.println("Le chemin fourni n'est pas valide !");
-			System.out.println("Veuillez entrez un nouveau chemin : ");
+			System.out.println("<!>Le chemin fourni n'est pas valide<!>");
+			System.out.println("<!>Le nom du fichier de sauvegarde doit aussi être indiqué<!>");
 			createSave(l);
 		}
 		s.close();
@@ -157,22 +157,39 @@ public class Save {
 	
 	public static Town[] convertSaveToAgglo()
 	{
-		System.out.println("==>Conversion de la sauvegarde en agglomération :");
-		Town[] villeTab = Town.createTownLoop(Save.getNbTown(), Save.getNameTown());
+		System.out.println("~~>Conversion de la sauvegarde en agglomération :");
+		Town[] villeTab = Town.createTownLoop(Save.getNameTown().size(), Save.getNameTown());
 		if (villeTab.length==0)
 		{
 			System.out.println("<!>L'agglomération est inexistante<!>");
 		}
-		for (int i = 0; i < townRoad1.size(); ++i)
+		for (int i = 0; i < townRoad1.size(); ++i) // Creation de route
 		{
-			Town.securedLinkCreation(villeTab, convertTownNameToSerial(villeTab, townRoad1.get(i)), convertTownNameToSerial(villeTab, townRoad2.get(i)));
+			int serial1 = convertTownNameToSerial(villeTab, townRoad1.get(i));
+			int serial2 = convertTownNameToSerial(villeTab, townRoad2.get(i));
+			if (serial1>0 && serial2>0)
+			{
+				Town.securedLinkCreation(villeTab, serial1, serial2);				
+			}
+			else
+			{
+				System.out.println("<!>Erreur lors de la création de route la ville " + townRoad1.get(i) + " vers la ville " + townRoad2.get(i)+"<!>");				
+			}
 		}
 		for (int i = 0; i < schoolLocation.size(); ++i)
 		{
-			Town.securedAddSchool(villeTab,convertTownNameToSerial(villeTab, schoolLocation.get(i)));
+			int serial = convertTownNameToSerial(villeTab, schoolLocation.get(i));
+			if (serial>0)
+			{
+				Town.securedAddSchool(villeTab,serial);
+			}
+			else
+			{
+				System.out.println("<!>Erreur lors de la création d'école à la ville " + schoolLocation.get(i)+"<!>");				
+			}
 		}
 		System.out.println("");
-		System.out.println("==>Vérification des contraintes d'accessibilité :");
+		System.out.println("~~>Vérification des contraintes d'accessibilité :");
 		if (villeTab.length==0)
 		{
 			System.out.println("<!>L'agglomération est inexistante<!>");

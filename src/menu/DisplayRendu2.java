@@ -214,23 +214,23 @@ public class DisplayRendu2 {
 			System.out.println("");
 			if (choice5 == 1) // l'utilisateur choisi algo1
 			{
-				System.out.println("==>Execution de l'algorithme 1 :");
+				System.out.println("~~>Execution de l'algorithme 1 :");
 				Algorithm.algorithm1(villeTab, villeTab.length);
 				displayScore(villeTab);
 			}
 			else if (choice5 == 2) // l'utilisateur choisi algo2
 			{
-				System.out.println("==>Execution de l'algorithme 2 :");
+				System.out.println("~~>Execution de l'algorithme 2 :");
 				Algorithm.algorithm2(villeTab, villeTab.length);
 				displayScore(villeTab);
 			}
 			else if (choice5 == 3) // l'utilisateur choisi Thanos
 			{
-				System.out.println("==>Execution de l'algorithme Thanos :");
+				System.out.println("~~>Execution de l'algorithme Thanos :");
 				Algorithm.algorithmCustom(villeTab);
 				displayThanos(villeTab);
 				System.out.println("");
-				System.out.println("==>Vérification des contraintes d'accessibilité :");
+				System.out.println("~~>Vérification des contraintes d'accessibilité :");
 				if (Town.checkConstraintAccess(villeTab)==false)
 				{
 					System.out.println("<!>L'agglomération ne respecte pas les contraintes d'accessibilité<!>");
@@ -259,7 +259,7 @@ public class DisplayRendu2 {
 	public static void displayScore(Town[] villeTab)
 	{
 		System.out.println("");
-		System.out.println("==>Score de l'agglomération :");
+		System.out.println("~~>Score de l'agglomération :");
 		System.out.println(ToStringRendu2.toStringScore(villeTab));
 	}
 
